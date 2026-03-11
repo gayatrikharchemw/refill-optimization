@@ -1,0 +1,33 @@
+fs: s3
+paths:
+  reports: /humana-prod-data/2026/Refill/internal_reports/
+cmapp:
+  host: https://v7.cmapp.medwatchers.com
+  client: Humana NonCMR
+  vault_path: secret/data/prod/cmapp-v7/humana/report-server-noncmr
+  account: Humana - Refill Reminder
+mongodb:
+  vault_path: database/prod/humana/mongodb/cmapp/creds/ro-noncmr-2026
+  uri: humana-noncmr-2026.l5qwy.mongodb.net
+  db: CMAPP-v7
+notifications:
+  email:
+    from_address: etl-alerts@medwatchers.com
+    to_addresses:
+      - dylan.bragdon@medwatchers.com
+      - gayatrishriram.kharche@medwatchers.com
+nice:
+  vault_path: secret/data/prod/nice/api
+outreach:
+  skill_id_eng: 23053485
+  skill_id_spa: 35643452
+  api:
+    vault_path: secret/data/prod/outreach/auth/users/admin
+    scope: admin
+    host: https://outreach.apps.medwatchers.com
+  postgres:
+    db_server: outreach-prod.chfo9olauvxn.us-west-2.rds.amazonaws.com
+    db_name: outreach
+    db_port: 5432
+    vault_path: database/prod/mw/postgres/outreach/creds/rw
+

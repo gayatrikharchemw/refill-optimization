@@ -1,0 +1,943 @@
+version = 1
+revision = 3
+requires-python = ">=3.13"
+resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform == 'win32'",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten'",
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+    "python_full_version < '3.14' and sys_platform == 'win32'",
+    "python_full_version < '3.14' and sys_platform == 'emscripten'",
+    "python_full_version < '3.14' and sys_platform != 'emscripten' and sys_platform != 'win32'",
+]
+
+[[package]]
+name = "bcrypt"
+version = "5.0.0"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0.tar.gz", hash = "sha256:f748f7c2d6fd375cc93d3fba7ef4a9e3a092421b8dbf34d8d4dc06be9492dfdd" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp313-cp313t-macosx_10_12_universal2.whl", hash = "sha256:f3c08197f3039bec79cee59a606d62b96b16669cff3949f21e74796b6e3cd2be" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp313-cp313t-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:200af71bc25f22006f4069060c88ed36f8aa4ff7f53e67ff04d2ab3f1e79a5b2" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp313-cp313t-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:baade0a5657654c2984468efb7d6c110db87ea63ef5a4b54732e7e337253e44f" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp313-cp313t-manylinux_2_28_aarch64.whl", hash = "sha256:c58b56cdfb03202b3bcc9fd8daee8e8e9b6d7e3163aa97c631dfcfcc24d36c86" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp313-cp313t-manylinux_2_28_armv7l.manylinux_2_31_armv7l.whl", hash = "sha256:4bfd2a34de661f34d0bda43c3e4e79df586e4716ef401fe31ea39d69d581ef23" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp313-cp313t-manylinux_2_28_x86_64.whl", hash = "sha256:ed2e1365e31fc73f1825fa830f1c8f8917ca1b3ca6185773b349c20fd606cec2" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp313-cp313t-manylinux_2_34_aarch64.whl", hash = "sha256:83e787d7a84dbbfba6f250dd7a5efd689e935f03dd83b0f919d39349e1f23f83" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp313-cp313t-manylinux_2_34_x86_64.whl", hash = "sha256:137c5156524328a24b9fac1cb5db0ba618bc97d11970b39184c1d87dc4bf1746" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp313-cp313t-musllinux_1_1_aarch64.whl", hash = "sha256:38cac74101777a6a7d3b3e3cfefa57089b5ada650dce2baf0cbdd9d65db22a9e" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp313-cp313t-musllinux_1_1_x86_64.whl", hash = "sha256:d8d65b564ec849643d9f7ea05c6d9f0cd7ca23bdd4ac0c2dbef1104ab504543d" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp313-cp313t-musllinux_1_2_aarch64.whl", hash = "sha256:741449132f64b3524e95cd30e5cd3343006ce146088f074f31ab26b94e6c75ba" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp313-cp313t-musllinux_1_2_x86_64.whl", hash = "sha256:212139484ab3207b1f0c00633d3be92fef3c5f0af17cad155679d03ff2ee1e41" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp313-cp313t-win32.whl", hash = "sha256:9d52ed507c2488eddd6a95bccee4e808d3234fa78dd370e24bac65a21212b861" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp313-cp313t-win_amd64.whl", hash = "sha256:f6984a24db30548fd39a44360532898c33528b74aedf81c26cf29c51ee47057e" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp313-cp313t-win_arm64.whl", hash = "sha256:9fffdb387abe6aa775af36ef16f55e318dcda4194ddbf82007a6f21da29de8f5" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp314-cp314t-macosx_10_12_universal2.whl", hash = "sha256:4870a52610537037adb382444fefd3706d96d663ac44cbb2f37e3919dca3d7ef" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:48f753100931605686f74e27a7b49238122aa761a9aefe9373265b8b7aa43ea4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:f70aadb7a809305226daedf75d90379c397b094755a710d7014b8b117df1ebbf" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp314-cp314t-manylinux_2_28_aarch64.whl", hash = "sha256:744d3c6b164caa658adcb72cb8cc9ad9b4b75c7db507ab4bc2480474a51989da" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp314-cp314t-manylinux_2_28_armv7l.manylinux_2_31_armv7l.whl", hash = "sha256:a28bc05039bdf3289d757f49d616ab3efe8cf40d8e8001ccdd621cd4f98f4fc9" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp314-cp314t-manylinux_2_28_x86_64.whl", hash = "sha256:7f277a4b3390ab4bebe597800a90da0edae882c6196d3038a73adf446c4f969f" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp314-cp314t-manylinux_2_34_aarch64.whl", hash = "sha256:79cfa161eda8d2ddf29acad370356b47f02387153b11d46042e93a0a95127493" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp314-cp314t-manylinux_2_34_x86_64.whl", hash = "sha256:a5393eae5722bcef046a990b84dff02b954904c36a194f6cfc817d7dca6c6f0b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:7f4c94dec1b5ab5d522750cb059bb9409ea8872d4494fd152b53cca99f1ddd8c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:0cae4cb350934dfd74c020525eeae0a5f79257e8a201c0c176f4b84fdbf2a4b4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp314-cp314t-win32.whl", hash = "sha256:b17366316c654e1ad0306a6858e189fc835eca39f7eb2cafd6aaca8ce0c40a2e" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp314-cp314t-win_amd64.whl", hash = "sha256:92864f54fb48b4c718fc92a32825d0e42265a627f956bc0361fe869f1adc3e7d" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp314-cp314t-win_arm64.whl", hash = "sha256:dd19cf5184a90c873009244586396a6a884d591a5323f0e8a5922560718d4993" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp38-abi3-macosx_10_12_universal2.whl", hash = "sha256:fc746432b951e92b58317af8e0ca746efe93e66555f1b40888865ef5bf56446b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp38-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:c2388ca94ffee269b6038d48747f4ce8df0ffbea43f31abfa18ac72f0218effb" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:560ddb6ec730386e7b3b26b8b4c88197aaed924430e7b74666a586ac997249ef" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp38-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:d79e5c65dcc9af213594d6f7f1fa2c98ad3fc10431e7aa53c176b441943efbdd" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp38-abi3-manylinux_2_28_armv7l.manylinux_2_31_armv7l.whl", hash = "sha256:2b732e7d388fa22d48920baa267ba5d97cca38070b69c0e2d37087b381c681fd" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp38-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:0c8e093ea2532601a6f686edbc2c6b2ec24131ff5c52f7610dd64fa4553b5464" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp38-abi3-manylinux_2_34_aarch64.whl", hash = "sha256:5b1589f4839a0899c146e8892efe320c0fa096568abd9b95593efac50a87cb75" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp38-abi3-manylinux_2_34_x86_64.whl", hash = "sha256:89042e61b5e808b67daf24a434d89bab164d4de1746b37a8d173b6b14f3db9ff" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp38-abi3-musllinux_1_1_aarch64.whl", hash = "sha256:e3cf5b2560c7b5a142286f69bde914494b6d8f901aaa71e453078388a50881c4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp38-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:f632fd56fc4e61564f78b46a2269153122db34988e78b6be8b32d28507b7eaeb" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp38-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:801cad5ccb6b87d1b430f183269b94c24f248dddbbc5c1f78b6ed231743e001c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp38-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:3cf67a804fc66fc217e6914a5635000259fbbbb12e78a99488e4d5ba445a71eb" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp38-abi3-win32.whl", hash = "sha256:3abeb543874b2c0524ff40c57a4e14e5d3a66ff33fb423529c88f180fd756538" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp38-abi3-win_amd64.whl", hash = "sha256:35a77ec55b541e5e583eb3436ffbbf53b0ffa1fa16ca6782279daf95d146dcd9" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp38-abi3-win_arm64.whl", hash = "sha256:cde08734f12c6a4e28dc6755cd11d3bdfea608d93d958fffbe95a7026ebe4980" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp39-abi3-macosx_10_12_universal2.whl", hash = "sha256:0c418ca99fd47e9c59a301744d63328f17798b5947b0f791e9af3c1c499c2d0a" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp39-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:ddb4e1500f6efdd402218ffe34d040a1196c072e07929b9820f363a1fd1f4191" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp39-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:7aeef54b60ceddb6f30ee3db090351ecf0d40ec6e2abf41430997407a46d2254" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp39-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:f0ce778135f60799d89c9693b9b398819d15f1921ba15fe719acb3178215a7db" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp39-abi3-manylinux_2_28_armv7l.manylinux_2_31_armv7l.whl", hash = "sha256:a71f70ee269671460b37a449f5ff26982a6f2ba493b3eabdd687b4bf35f875ac" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp39-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:f8429e1c410b4073944f03bd778a9e066e7fad723564a52ff91841d278dfc822" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp39-abi3-manylinux_2_34_aarch64.whl", hash = "sha256:edfcdcedd0d0f05850c52ba3127b1fce70b9f89e0fe5ff16517df7e81fa3cbb8" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp39-abi3-manylinux_2_34_x86_64.whl", hash = "sha256:611f0a17aa4a25a69362dcc299fda5c8a3d4f160e2abb3831041feb77393a14a" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp39-abi3-musllinux_1_1_aarch64.whl", hash = "sha256:db99dca3b1fdc3db87d7c57eac0c82281242d1eabf19dcb8a6b10eb29a2e72d1" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp39-abi3-musllinux_1_1_x86_64.whl", hash = "sha256:5feebf85a9cefda32966d8171f5db7e3ba964b77fdfe31919622256f80f9cf42" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp39-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:3ca8a166b1140436e058298a34d88032ab62f15aae1c598580333dc21d27ef10" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp39-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:61afc381250c3182d9078551e3ac3a41da14154fbff647ddf52a769f588c4172" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp39-abi3-win32.whl", hash = "sha256:64d7ce196203e468c457c37ec22390f1a61c85c6f0b8160fd752940ccfb3a683" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp39-abi3-win_amd64.whl", hash = "sha256:64ee8434b0da054d830fa8e89e1c8bf30061d539044a39524ff7dec90481e5c2" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/bcrypt/5.0.0/bcrypt-5.0.0-cp39-abi3-win_arm64.whl", hash = "sha256:f2347d3534e76bf50bca5500989d6c1d05ed64b440408057a37673282c654927" },
+]
+
+[[package]]
+name = "boto3"
+version = "1.42.59"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "botocore" },
+    { name = "jmespath" },
+    { name = "s3transfer" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/boto3/1.42.59/boto3-1.42.59.tar.gz", hash = "sha256:6c4a14a4eb37b58a9048901bdeefbe1c529638b73e8f55413319a25f010ca211" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/boto3/1.42.59/boto3-1.42.59-py3-none-any.whl", hash = "sha256:7a66e3e8e2087ea4403e135e9de592e6d63fc9a91080d8dac415bb74df873a72" },
+]
+
+[[package]]
+name = "botocore"
+version = "1.42.59"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "jmespath" },
+    { name = "python-dateutil" },
+    { name = "urllib3" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/botocore/1.42.59/botocore-1.42.59.tar.gz", hash = "sha256:5314f19e1da8fc0ebc41bdb8bbe17c9a7397d87f4d887076ac8bdef972a34138" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/botocore/1.42.59/botocore-1.42.59-py3-none-any.whl", hash = "sha256:d2f2ff7ecc31e86ef46b5daee112cfbca052c13801285fb23af909f7bff5b657" },
+]
+
+[[package]]
+name = "certifi"
+version = "2026.2.25"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/certifi/2026.2.25/certifi-2026.2.25.tar.gz", hash = "sha256:e887ab5cee78ea814d3472169153c2d12cd43b14bd03329a39a9c6e2e80bfba7" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/certifi/2026.2.25/certifi-2026.2.25-py3-none-any.whl", hash = "sha256:027692e4402ad994f1c42e52a4997a9763c646b73e4096e4d5d6db8af1d6f0fa" },
+]
+
+[[package]]
+name = "cffi"
+version = "2.0.0"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "pycparser", marker = "implementation_name != 'PyPy'" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0.tar.gz", hash = "sha256:44d1b5909021139fe36001ae048dbdde8214afa20200eda0f64c068cac5d5529" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:00bdf7acc5f795150faa6957054fbbca2439db2f775ce831222b66f192f03beb" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:45d5e886156860dc35862657e1494b9bae8dfa63bf56796f2fb56e1679fc0bca" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp313-cp313-manylinux1_i686.manylinux2014_i686.manylinux_2_17_i686.manylinux_2_5_i686.whl", hash = "sha256:07b271772c100085dd28b74fa0cd81c8fb1a3ba18b21e03d7c27f3436a10606b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:d48a880098c96020b02d5a1f7d9251308510ce8858940e6fa99ece33f610838b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp313-cp313-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl", hash = "sha256:f93fd8e5c8c0a4aa1f424d6173f14a892044054871c771f8566e4008eaa359d2" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp313-cp313-manylinux2014_s390x.manylinux_2_17_s390x.whl", hash = "sha256:dd4f05f54a52fb558f1ba9f528228066954fee3ebe629fc1660d874d040ae5a3" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:c8d3b5532fc71b7a77c09192b4a5a200ea992702734a2e9279a37f2478236f26" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:d9b29c1f0ae438d5ee9acb31cadee00a58c46cc9c0b2f9038c6b0b3470877a8c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:6d50360be4546678fc1b79ffe7a66265e28667840010348dd69a314145807a1b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp313-cp313-win32.whl", hash = "sha256:74a03b9698e198d47562765773b4a8309919089150a0bb17d829ad7b44b60d27" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp313-cp313-win_amd64.whl", hash = "sha256:19f705ada2530c1167abacb171925dd886168931e0a7b78f5bffcae5c6b5be75" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp313-cp313-win_arm64.whl", hash = "sha256:256f80b80ca3853f90c21b23ee78cd008713787b1b1e93eae9f3d6a7134abd91" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314-macosx_10_13_x86_64.whl", hash = "sha256:fc33c5141b55ed366cfaad382df24fe7dcbc686de5be719b207bb248e3053dc5" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:c654de545946e0db659b3400168c9ad31b5d29593291482c43e3564effbcee13" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:24b6f81f1983e6df8db3adc38562c83f7d4a0c36162885ec7f7b77c7dcbec97b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl", hash = "sha256:12873ca6cb9b0f0d3a0da705d6086fe911591737a59f28b7936bdfed27c0d47c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314-manylinux2014_s390x.manylinux_2_17_s390x.whl", hash = "sha256:d9b97165e8aed9272a6bb17c01e3cc5871a594a446ebedc996e2397a1c1ea8ef" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:afb8db5439b81cf9c9d0c80404b60c3cc9c3add93e114dcae767f1477cb53775" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:737fe7d37e1a1bffe70bd5754ea763a62a066dc5913ca57e957824b72a85e205" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:38100abb9d1b1435bc4cc340bb4489635dc2f0da7456590877030c9b3d40b0c1" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314-win32.whl", hash = "sha256:087067fa8953339c723661eda6b54bc98c5625757ea62e95eb4898ad5e776e9f" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314-win_amd64.whl", hash = "sha256:203a48d1fb583fc7d78a4c6655692963b860a417c0528492a6bc21f1aaefab25" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314-win_arm64.whl", hash = "sha256:dbd5c7a25a7cb98f5ca55d258b103a2054f859a46ae11aaf23134f9cc0d356ad" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314t-macosx_10_13_x86_64.whl", hash = "sha256:9a67fc9e8eb39039280526379fb3a70023d77caec1852002b4da7e8b270c4dd9" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:7a66c7204d8869299919db4d5069a82f1561581af12b11b3c9f48c584eb8743d" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:7cc09976e8b56f8cebd752f7113ad07752461f48a58cbba644139015ac24954c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314t-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl", hash = "sha256:92b68146a71df78564e4ef48af17551a5ddd142e5190cdf2c5624d0c3ff5b2e8" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314t-manylinux2014_s390x.manylinux_2_17_s390x.whl", hash = "sha256:b1e74d11748e7e98e2f426ab176d4ed720a64412b6a15054378afdb71e0f37dc" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:28a3a209b96630bca57cce802da70c266eb08c6e97e5afd61a75611ee6c64592" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:7553fb2090d71822f02c629afe6042c299edf91ba1bf94951165613553984512" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:6c6c373cfc5c83a975506110d17457138c8c63016b563cc9ed6e056a82f13ce4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314t-win32.whl", hash = "sha256:1fc9ea04857caf665289b7a75923f2c6ed559b8298a1b8c49e59f7dd95c8481e" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314t-win_amd64.whl", hash = "sha256:d68b6cef7827e8641e8ef16f4494edda8b36104d79773a334beaa1e3521430f6" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cffi/2.0.0/cffi-2.0.0-cp314-cp314t-win_arm64.whl", hash = "sha256:0a1527a803f0a659de1af2e1fd700213caba79377e27e4693648c2923da066f9" },
+]
+
+[[package]]
+name = "charset-normalizer"
+version = "3.4.4"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4.tar.gz", hash = "sha256:94537985111c35f28720e43603b8e7b43a6ecfb2ce1d3058bbe955b73404e21a" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-macosx_10_13_universal2.whl", hash = "sha256:e1f185f86a6f3403aa2420e815904c67b2f9ebc443f045edd0de921108345794" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:6b39f987ae8ccdf0d2642338faf2abb1862340facc796048b604ef14919e55ed" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-manylinux2014_armv7l.manylinux_2_17_armv7l.manylinux_2_31_armv7l.whl", hash = "sha256:3162d5d8ce1bb98dd51af660f2121c55d0fa541b46dff7bb9b9f86ea1d87de72" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-manylinux2014_ppc64le.manylinux_2_17_ppc64le.manylinux_2_28_ppc64le.whl", hash = "sha256:81d5eb2a312700f4ecaa977a8235b634ce853200e828fbadf3a9c50bab278328" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-manylinux2014_s390x.manylinux_2_17_s390x.manylinux_2_28_s390x.whl", hash = "sha256:5bd2293095d766545ec1a8f612559f6b40abc0eb18bb2f5d1171872d34036ede" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:a8a8b89589086a25749f471e6a900d3f662d1d3b6e2e59dcecf787b1cc3a1894" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-manylinux_2_31_riscv64.manylinux_2_39_riscv64.whl", hash = "sha256:bc7637e2f80d8530ee4a78e878bce464f70087ce73cf7c1caf142416923b98f1" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:f8bf04158c6b607d747e93949aa60618b61312fe647a6369f88ce2ff16043490" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-musllinux_1_2_armv7l.whl", hash = "sha256:554af85e960429cf30784dd47447d5125aaa3b99a6f0683589dbd27e2f45da44" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-musllinux_1_2_ppc64le.whl", hash = "sha256:74018750915ee7ad843a774364e13a3db91682f26142baddf775342c3f5b1133" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-musllinux_1_2_riscv64.whl", hash = "sha256:c0463276121fdee9c49b98908b3a89c39be45d86d1dbaa22957e38f6321d4ce3" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-musllinux_1_2_s390x.whl", hash = "sha256:362d61fd13843997c1c446760ef36f240cf81d3ebf74ac62652aebaf7838561e" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:9a26f18905b8dd5d685d6d07b0cdf98a79f3c7a918906af7cc143ea2e164c8bc" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-win32.whl", hash = "sha256:9b35f4c90079ff2e2edc5b26c0c77925e5d2d255c42c74fdb70fb49b172726ac" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-win_amd64.whl", hash = "sha256:b435cba5f4f750aa6c0a0d92c541fb79f69a387c91e61f1795227e4ed9cece14" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp313-cp313-win_arm64.whl", hash = "sha256:542d2cee80be6f80247095cc36c418f7bddd14f4a6de45af91dfad36d817bba2" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-macosx_10_13_universal2.whl", hash = "sha256:da3326d9e65ef63a817ecbcc0df6e94463713b754fe293eaa03da99befb9a5bd" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:8af65f14dc14a79b924524b1e7fffe304517b2bff5a58bf64f30b98bbc5079eb" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-manylinux2014_armv7l.manylinux_2_17_armv7l.manylinux_2_31_armv7l.whl", hash = "sha256:74664978bb272435107de04e36db5a9735e78232b85b77d45cfb38f758efd33e" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-manylinux2014_ppc64le.manylinux_2_17_ppc64le.manylinux_2_28_ppc64le.whl", hash = "sha256:752944c7ffbfdd10c074dc58ec2d5a8a4cd9493b314d367c14d24c17684ddd14" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-manylinux2014_s390x.manylinux_2_17_s390x.manylinux_2_28_s390x.whl", hash = "sha256:d1f13550535ad8cff21b8d757a3257963e951d96e20ec82ab44bc64aeb62a191" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:ecaae4149d99b1c9e7b88bb03e3221956f68fd6d50be2ef061b2381b61d20838" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-manylinux_2_31_riscv64.manylinux_2_39_riscv64.whl", hash = "sha256:cb6254dc36b47a990e59e1068afacdcd02958bdcce30bb50cc1700a8b9d624a6" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:c8ae8a0f02f57a6e61203a31428fa1d677cbe50c93622b4149d5c0f319c1d19e" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-musllinux_1_2_armv7l.whl", hash = "sha256:47cc91b2f4dd2833fddaedd2893006b0106129d4b94fdb6af1f4ce5a9965577c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-musllinux_1_2_ppc64le.whl", hash = "sha256:82004af6c302b5d3ab2cfc4cc5f29db16123b1a8417f2e25f9066f91d4411090" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-musllinux_1_2_riscv64.whl", hash = "sha256:2b7d8f6c26245217bd2ad053761201e9f9680f8ce52f0fcd8d0755aeae5b2152" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-musllinux_1_2_s390x.whl", hash = "sha256:799a7a5e4fb2d5898c60b640fd4981d6a25f1c11790935a44ce38c54e985f828" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:99ae2cffebb06e6c22bdc25801d7b30f503cc87dbd283479e7b606f70aff57ec" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-win32.whl", hash = "sha256:f9d332f8c2a2fcbffe1378594431458ddbef721c1769d78e2cbc06280d8155f9" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-win_amd64.whl", hash = "sha256:8a6562c3700cce886c5be75ade4a5db4214fda19fede41d9792d100288d8f94c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-cp314-cp314-win_arm64.whl", hash = "sha256:de00632ca48df9daf77a2c65a484531649261ec9f25489917f09e455cb09ddb2" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/charset-normalizer/3.4.4/charset_normalizer-3.4.4-py3-none-any.whl", hash = "sha256:7a32c560861a02ff789ad905a2fe94e3f840803362c84fecf1851cb4cf3dc37f" },
+]
+
+[[package]]
+name = "cmappclient"
+version = "6.3.5"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "pandas" },
+    { name = "pytz" },
+    { name = "requests" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cmappclient/6.3.5/cmappclient-6.3.5.tar.gz", hash = "sha256:c69b1bf6320d545c510771c73cf60e05c1a0a67c5030bbd85ba2d596647424b8" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cmappclient/6.3.5/cmappclient-6.3.5-py3-none-any.whl", hash = "sha256:9fe7e269be7a6065c45b9d3c8b0af4b37f839781bb38d2ff632573cd866b0255" },
+]
+
+[[package]]
+name = "cmappmongo"
+version = "2.1.6"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "pandas" },
+    { name = "pymongo" },
+    { name = "pyyaml" },
+    { name = "requests" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cmappmongo/2.1.6/cmappmongo-2.1.6.tar.gz", hash = "sha256:999cba22435ea5e30b20c6e007261b625d4b462e721b72b3ef9efc0615bf26d4" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cmappmongo/2.1.6/cmappmongo-2.1.6-py3-none-any.whl", hash = "sha256:6ced26ddf6ae5fd57f3b65069cb79643652e6c8bbd2fda438e7a8d789db07969" },
+]
+
+[[package]]
+name = "cryptography"
+version = "46.0.5"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "cffi", marker = "platform_python_implementation != 'PyPy'" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5.tar.gz", hash = "sha256:abace499247268e3757271b2f1e244b36b06f8515cf27c4d49468fc9eb16e93d" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp311-abi3-macosx_10_9_universal2.whl", hash = "sha256:351695ada9ea9618b3500b490ad54c739860883df6c1f555e088eaf25b1bbaad" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp311-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:c18ff11e86df2e28854939acde2d003f7984f721eba450b56a200ad90eeb0e6b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp311-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:4d7e3d356b8cd4ea5aff04f129d5f66ebdc7b6f8eae802b93739ed520c47c79b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp311-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:50bfb6925eff619c9c023b967d5b77a54e04256c4281b0e21336a130cd7fc263" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp311-abi3-manylinux_2_28_ppc64le.whl", hash = "sha256:803812e111e75d1aa73690d2facc295eaefd4439be1023fefc4995eaea2af90d" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp311-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:3ee190460e2fbe447175cda91b88b84ae8322a104fc27766ad09428754a618ed" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp311-abi3-manylinux_2_31_armv7l.whl", hash = "sha256:f145bba11b878005c496e93e257c1e88f154d278d2638e6450d17e0f31e558d2" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp311-abi3-manylinux_2_34_aarch64.whl", hash = "sha256:e9251e3be159d1020c4030bd2e5f84d6a43fe54b6c19c12f51cde9542a2817b2" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp311-abi3-manylinux_2_34_ppc64le.whl", hash = "sha256:47fb8a66058b80e509c47118ef8a75d14c455e81ac369050f20ba0d23e77fee0" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp311-abi3-manylinux_2_34_x86_64.whl", hash = "sha256:4c3341037c136030cb46e4b1e17b7418ea4cbd9dd207e4a6f3b2b24e0d4ac731" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp311-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:890bcb4abd5a2d3f852196437129eb3667d62630333aacc13dfd470fad3aaa82" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp311-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:80a8d7bfdf38f87ca30a5391c0c9ce4ed2926918e017c29ddf643d0ed2778ea1" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp311-abi3-win32.whl", hash = "sha256:60ee7e19e95104d4c03871d7d7dfb3d22ef8a9b9c6778c94e1c8fcc8365afd48" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp311-abi3-win_amd64.whl", hash = "sha256:38946c54b16c885c72c4f59846be9743d699eee2b69b6988e0a00a01f46a61a4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp314-cp314t-macosx_10_9_universal2.whl", hash = "sha256:94a76daa32eb78d61339aff7952ea819b1734b46f73646a07decb40e5b3448e2" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:5be7bf2fb40769e05739dd0046e7b26f9d4670badc7b032d6ce4db64dddc0678" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:fe346b143ff9685e40192a4960938545c699054ba11d4f9029f94751e3f71d87" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp314-cp314t-manylinux_2_28_aarch64.whl", hash = "sha256:c69fd885df7d089548a42d5ec05be26050ebcd2283d89b3d30676eb32ff87dee" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp314-cp314t-manylinux_2_28_ppc64le.whl", hash = "sha256:8293f3dea7fc929ef7240796ba231413afa7b68ce38fd21da2995549f5961981" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp314-cp314t-manylinux_2_28_x86_64.whl", hash = "sha256:1abfdb89b41c3be0365328a410baa9df3ff8a9110fb75e7b52e66803ddabc9a9" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp314-cp314t-manylinux_2_31_armv7l.whl", hash = "sha256:d66e421495fdb797610a08f43b05269e0a5ea7f5e652a89bfd5a7d3c1dee3648" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp314-cp314t-manylinux_2_34_aarch64.whl", hash = "sha256:4e817a8920bfbcff8940ecfd60f23d01836408242b30f1a708d93198393a80b4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp314-cp314t-manylinux_2_34_ppc64le.whl", hash = "sha256:68f68d13f2e1cb95163fa3b4db4bf9a159a418f5f6e7242564fc75fcae667fd0" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp314-cp314t-manylinux_2_34_x86_64.whl", hash = "sha256:a3d1fae9863299076f05cb8a778c467578262fae09f9dc0ee9b12eb4268ce663" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:c4143987a42a2397f2fc3b4d7e3a7d313fbe684f67ff443999e803dd75a76826" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:7d731d4b107030987fd61a7f8ab512b25b53cef8f233a97379ede116f30eb67d" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp314-cp314t-win32.whl", hash = "sha256:c3bcce8521d785d510b2aad26ae2c966092b7daa8f45dd8f44734a104dc0bc1a" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp314-cp314t-win_amd64.whl", hash = "sha256:4d8ae8659ab18c65ced284993c2265910f6c9e650189d4e3f68445ef82a810e4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp38-abi3-macosx_10_9_universal2.whl", hash = "sha256:4108d4c09fbbf2789d0c926eb4152ae1760d5a2d97612b92d508d96c861e4d31" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp38-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:7d1f30a86d2757199cb2d56e48cce14deddf1f9c95f1ef1b64ee91ea43fe2e18" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:039917b0dc418bb9f6edce8a906572d69e74bd330b0b3fea4f79dab7f8ddd235" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp38-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:ba2a27ff02f48193fc4daeadf8ad2590516fa3d0adeeb34336b96f7fa64c1e3a" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp38-abi3-manylinux_2_28_ppc64le.whl", hash = "sha256:61aa400dce22cb001a98014f647dc21cda08f7915ceb95df0c9eaf84b4b6af76" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp38-abi3-manylinux_2_28_x86_64.whl", hash = "sha256:3ce58ba46e1bc2aac4f7d9290223cead56743fa6ab94a5d53292ffaac6a91614" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp38-abi3-manylinux_2_31_armv7l.whl", hash = "sha256:420d0e909050490d04359e7fdb5ed7e667ca5c3c402b809ae2563d7e66a92229" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp38-abi3-manylinux_2_34_aarch64.whl", hash = "sha256:582f5fcd2afa31622f317f80426a027f30dc792e9c80ffee87b993200ea115f1" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp38-abi3-manylinux_2_34_ppc64le.whl", hash = "sha256:bfd56bb4b37ed4f330b82402f6f435845a5f5648edf1ad497da51a8452d5d62d" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp38-abi3-manylinux_2_34_x86_64.whl", hash = "sha256:a3d507bb6a513ca96ba84443226af944b0f7f47dcc9a399d110cd6146481d24c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp38-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:9f16fbdf4da055efb21c22d81b89f155f02ba420558db21288b3d0035bafd5f4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp38-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:ced80795227d70549a411a4ab66e8ce307899fad2220ce5ab2f296e687eacde9" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp38-abi3-win32.whl", hash = "sha256:02f547fce831f5096c9a567fd41bc12ca8f11df260959ecc7c3202555cc47a72" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/cryptography/46.0.5/cryptography-46.0.5-cp38-abi3-win_amd64.whl", hash = "sha256:556e106ee01aa13484ce9b0239bca667be5004efb0aabbed28d353df86445595" },
+]
+
+[[package]]
+name = "dnspython"
+version = "2.8.0"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/dnspython/2.8.0/dnspython-2.8.0.tar.gz", hash = "sha256:181d3c6996452cb1189c4046c61599b84a5a86e099562ffde77d26984ff26d0f" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/dnspython/2.8.0/dnspython-2.8.0-py3-none-any.whl", hash = "sha256:01d9bbc4a2d76bf0db7c1f729812ded6d912bd318d3b1cf81d30c0f845dbf3af" },
+]
+
+[[package]]
+name = "et-xmlfile"
+version = "2.0.0"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/et-xmlfile/2.0.0/et_xmlfile-2.0.0.tar.gz", hash = "sha256:dab3f4764309081ce75662649be815c4c9081e88f0837825f90fd28317d4da54" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/et-xmlfile/2.0.0/et_xmlfile-2.0.0-py3-none-any.whl", hash = "sha256:7a91720bc756843502c3b7504c77b8fe44217c85c537d85037f0f536151b2caa" },
+]
+
+[[package]]
+name = "greenlet"
+version = "3.3.2"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2.tar.gz", hash = "sha256:2eaf067fc6d886931c7962e8c6bede15d2f01965560f3359b27c80bde2d151f2" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp313-cp313-macosx_11_0_universal2.whl", hash = "sha256:aa6ac98bdfd716a749b84d4034486863fd81c3abde9aa3cf8eff9127981a4ae4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:ab0c7e7901a00bc0a7284907273dc165b32e0d109a6713babd04471327ff7986" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp313-cp313-manylinux_2_24_ppc64le.manylinux_2_28_ppc64le.whl", hash = "sha256:d248d8c23c67d2291ffd47af766e2a3aa9fa1c6703155c099feb11f526c63a92" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp313-cp313-manylinux_2_24_s390x.manylinux_2_28_s390x.whl", hash = "sha256:ccd21bb86944ca9be6d967cf7691e658e43417782bce90b5d2faeda0ff78a7dd" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:b6997d360a4e6a4e936c0f9625b1c20416b8a0ea18a8e19cabbefc712e7397ab" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:64970c33a50551c7c50491671265d8954046cb6e8e2999aacdd60e439b70418a" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:1a9172f5bf6bd88e6ba5a84e0a68afeac9dc7b6b412b245dd64f52d83c81e55b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp313-cp313-win_amd64.whl", hash = "sha256:a7945dd0eab63ded0a48e4dcade82939783c172290a7903ebde9e184333ca124" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp313-cp313-win_arm64.whl", hash = "sha256:394ead29063ee3515b4e775216cb756b2e3b4a7e55ae8fd884f17fa579e6b327" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314-macosx_11_0_universal2.whl", hash = "sha256:8d1658d7291f9859beed69a776c10822a0a799bc4bfe1bd4272bb60e62507dab" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:18cb1b7337bca281915b3c5d5ae19f4e76d35e1df80f4ad3c1a7be91fadf1082" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314-manylinux_2_24_ppc64le.manylinux_2_28_ppc64le.whl", hash = "sha256:c2e47408e8ce1c6f1ceea0dffcdf6ebb85cc09e55c7af407c99f1112016e45e9" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314-manylinux_2_24_s390x.manylinux_2_28_s390x.whl", hash = "sha256:e3cb43ce200f59483eb82949bf1835a99cf43d7571e900d7c8d5c62cdf25d2f9" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:63d10328839d1973e5ba35e98cccbca71b232b14051fd957b6f8b6e8e80d0506" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:8e4ab3cfb02993c8cc248ea73d7dae6cec0253e9afa311c9b37e603ca9fad2ce" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:94ad81f0fd3c0c0681a018a976e5c2bd2ca2d9d94895f23e7bb1af4e8af4e2d5" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314-win_amd64.whl", hash = "sha256:8c4dd0f3997cf2512f7601563cc90dfb8957c0cff1e3a1b23991d4ea1776c492" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314-win_arm64.whl", hash = "sha256:cd6f9e2bbd46321ba3bbb4c8a15794d32960e3b0ae2cc4d49a1a53d314805d71" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314t-macosx_11_0_universal2.whl", hash = "sha256:e26e72bec7ab387ac80caa7496e0f908ff954f31065b0ffc1f8ecb1338b11b54" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:8b466dff7a4ffda6ca975979bab80bdadde979e29fc947ac3be4451428d8b0e4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314t-manylinux_2_24_ppc64le.manylinux_2_28_ppc64le.whl", hash = "sha256:b8bddc5b73c9720bea487b3bffdb1840fe4e3656fba3bd40aa1489e9f37877ff" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314t-manylinux_2_24_s390x.manylinux_2_28_s390x.whl", hash = "sha256:59b3e2c40f6706b05a9cd299c836c6aa2378cabe25d021acd80f13abf81181cf" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:b26b0f4428b871a751968285a1ac9648944cea09807177ac639b030bddebcea4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:1fb39a11ee2e4d94be9a76671482be9398560955c9e568550de0224e41104727" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:20154044d9085151bc309e7689d6f7ba10027f8f5a8c0676ad398b951913d89e" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/greenlet/3.3.2/greenlet-3.3.2-cp314-cp314t-win_amd64.whl", hash = "sha256:c04c5e06ec3e022cbfe2cd4a846e1d4e50087444f875ff6d2c2ad8445495cf1a" },
+]
+
+[[package]]
+name = "idna"
+version = "3.11"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/idna/3.11/idna-3.11.tar.gz", hash = "sha256:795dafcc9c04ed0c1fb032c2aa73654d8e8c5023a7df64a53f39190ada629902" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/idna/3.11/idna-3.11-py3-none-any.whl", hash = "sha256:771a87f49d9defaf64091e6e6fe9c18d4833f140bd19464795bc32d966ca37ea" },
+]
+
+[[package]]
+name = "invoke"
+version = "2.2.1"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/invoke/2.2.1/invoke-2.2.1.tar.gz", hash = "sha256:515bf49b4a48932b79b024590348da22f39c4942dff991ad1fb8b8baea1be707" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/invoke/2.2.1/invoke-2.2.1-py3-none-any.whl", hash = "sha256:2413bc441b376e5cd3f55bb5d364f973ad8bdd7bf87e53c79de3c11bf3feecc8" },
+]
+
+[[package]]
+name = "isodate"
+version = "0.7.2"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/isodate/0.7.2/isodate-0.7.2.tar.gz", hash = "sha256:4cd1aa0f43ca76f4a6c6c0292a85f40b35ec2e43e315b59f06e6d32171a953e6" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/isodate/0.7.2/isodate-0.7.2-py3-none-any.whl", hash = "sha256:28009937d8031054830160fce6d409ed342816b543597cece116d966c6d99e15" },
+]
+
+[[package]]
+name = "jmespath"
+version = "1.1.0"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/jmespath/1.1.0/jmespath-1.1.0.tar.gz", hash = "sha256:472c87d80f36026ae83c6ddd0f1d05d4e510134ed462851fd5f754c8c3cbb88d" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/jmespath/1.1.0/jmespath-1.1.0-py3-none-any.whl", hash = "sha256:a5663118de4908c91729bea0acadca56526eb2698e83de10cd116ae0f4e97c64" },
+]
+
+[[package]]
+name = "mw-vault"
+version = "1.1.10"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "requests" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/mw-vault/1.1.10/mw_vault-1.1.10.tar.gz", hash = "sha256:626397ce9558ea6c9d5bc92015a88066ab9993ac464cb5ca1381eb5c3e54b98e" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/mw-vault/1.1.10/mw_vault-1.1.10-py3-none-any.whl", hash = "sha256:bb4b06f7d0df24dd1be81d0c0ed29146158b55d96494514441641979acc47f6b" },
+]
+
+[[package]]
+name = "mwemailer"
+version = "0.0.2"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "boto3" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/mwemailer/0.0.2/mwemailer-0.0.2.tar.gz", hash = "sha256:dd029dcf9497abad2f568766abef25c9fff6f341f04a29c7826a9d0e4cea37a6" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/mwemailer/0.0.2/mwemailer-0.0.2-py3-none-any.whl", hash = "sha256:1f4358f715fa0a31f5d4dd977b8ffaf773862385361f6c1a2bcd0b43ef74dc08" },
+]
+
+[[package]]
+name = "niceclient"
+version = "0.3.16"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "isodate" },
+    { name = "mw-vault" },
+    { name = "pandas" },
+    { name = "requests" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/niceclient/0.3.16/niceclient-0.3.16.tar.gz", hash = "sha256:088a5d57e60bd023ca4ebd653ea7bcff8b4f3f9f5ca8cd04e8bc442713c40f96" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/niceclient/0.3.16/niceclient-0.3.16-py3-none-any.whl", hash = "sha256:7ae03b7dc596dacd635fc343bcc5383de8f9a7404140fd5ca5eaedb008b6d75a" },
+]
+
+[[package]]
+name = "numpy"
+version = "2.4.2"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2.tar.gz", hash = "sha256:659a6107e31a83c4e33f763942275fd278b21d095094044eb35569e86a21ddae" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:25f2059807faea4b077a2b6837391b5d830864b3543627f381821c646f31a63c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:bd3a7a9f5847d2fb8c2c6d1c862fa109c31a9abeca1a3c2bd5a64572955b2979" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313-macosx_14_0_arm64.whl", hash = "sha256:8e4549f8a3c6d13d55041925e912bfd834285ef1dd64d6bc7d542583355e2e98" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313-macosx_14_0_x86_64.whl", hash = "sha256:aea4f66ff44dfddf8c2cffd66ba6538c5ec67d389285292fe428cb2c738c8aef" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:c3cd545784805de05aafe1dde61752ea49a359ccba9760c1e5d1c88a93bbf2b7" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:d0d9b7c93578baafcbc5f0b83eaf17b79d345c6f36917ba0c67f45226911d499" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:f74f0f7779cc7ae07d1810aab8ac6b1464c3eafb9e283a40da7309d5e6e48fbb" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:c7ac672d699bf36275c035e16b65539931347d68b70667d28984c9fb34e07fa7" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313-win32.whl", hash = "sha256:8e9afaeb0beff068b4d9cd20d322ba0ee1cecfb0b08db145e4ab4dd44a6b5110" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313-win_amd64.whl", hash = "sha256:7df2de1e4fba69a51c06c28f5a3de36731eb9639feb8e1cf7e4a7b0daf4cf622" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313-win_arm64.whl", hash = "sha256:0fece1d1f0a89c16b03442eae5c56dc0be0c7883b5d388e0c03f53019a4bfd71" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313t-macosx_11_0_arm64.whl", hash = "sha256:5633c0da313330fd20c484c78cdd3f9b175b55e1a766c4a174230c6b70ad8262" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313t-macosx_14_0_arm64.whl", hash = "sha256:d9f64d786b3b1dd742c946c42d15b07497ed14af1a1f3ce840cce27daa0ce913" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313t-macosx_14_0_x86_64.whl", hash = "sha256:b21041e8cb6a1eb5312dd1d2f80a94d91efffb7a06b70597d44f1bd2dfc315ab" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313t-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:00ab83c56211a1d7c07c25e3217ea6695e50a3e2f255053686b081dc0b091a82" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313t-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:2fb882da679409066b4603579619341c6d6898fc83a8995199d5249f986e8e8f" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313t-musllinux_1_2_aarch64.whl", hash = "sha256:66cb9422236317f9d44b67b4d18f44efe6e9c7f8794ac0462978513359461554" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313t-musllinux_1_2_x86_64.whl", hash = "sha256:0f01dcf33e73d80bd8dc0f20a71303abbafa26a19e23f6b68d1aa9990af90257" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313t-win32.whl", hash = "sha256:52b913ec40ff7ae845687b0b34d8d93b60cb66dcee06996dd5c99f2fc9328657" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313t-win_amd64.whl", hash = "sha256:5eea80d908b2c1f91486eb95b3fb6fab187e569ec9752ab7d9333d2e66bf2d6b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp313-cp313t-win_arm64.whl", hash = "sha256:fd49860271d52127d61197bb50b64f58454e9f578cb4b2c001a6de8b1f50b0b1" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314-macosx_10_15_x86_64.whl", hash = "sha256:444be170853f1f9d528428eceb55f12918e4fda5d8805480f36a002f1415e09b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:d1240d50adff70c2a88217698ca844723068533f3f5c5fa6ee2e3220e3bdb000" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314-macosx_14_0_arm64.whl", hash = "sha256:7cdde6de52fb6664b00b056341265441192d1291c130e99183ec0d4b110ff8b1" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314-macosx_14_0_x86_64.whl", hash = "sha256:cda077c2e5b780200b6b3e09d0b42205a3d1c68f30c6dceb90401c13bff8fe74" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:d30291931c915b2ab5717c2974bb95ee891a1cf22ebc16a8006bd59cd210d40a" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:bba37bc29d4d85761deed3954a1bc62be7cf462b9510b51d367b769a8c8df325" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:b2f0073ed0868db1dcd86e052d37279eef185b9c8db5bf61f30f46adac63c909" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:7f54844851cdb630ceb623dcec4db3240d1ac13d4990532446761baede94996a" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314-win32.whl", hash = "sha256:12e26134a0331d8dbd9351620f037ec470b7c75929cb8a1537f6bfe411152a1a" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314-win_amd64.whl", hash = "sha256:068cdb2d0d644cdb45670810894f6a0600797a69c05f1ac478e8d31670b8ee75" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314-win_arm64.whl", hash = "sha256:6ed0be1ee58eef41231a5c943d7d1375f093142702d5723ca2eb07db9b934b05" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:98f16a80e917003a12c0580f97b5f875853ebc33e2eaa4bccfc8201ac6869308" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314t-macosx_14_0_arm64.whl", hash = "sha256:20abd069b9cda45874498b245c8015b18ace6de8546bf50dfa8cea1696ed06ef" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314t-macosx_14_0_x86_64.whl", hash = "sha256:e98c97502435b53741540a5717a6749ac2ada901056c7db951d33e11c885cc7d" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314t-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:da6cad4e82cb893db4b69105c604d805e0c3ce11501a55b5e9f9083b47d2ffe8" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314t-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:9e4424677ce4b47fe73c8b5556d876571f7c6945d264201180db2dc34f676ab5" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:2b8f157c8a6f20eb657e240f8985cc135598b2b46985c5bccbde7616dc9c6b1e" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:5daf6f3914a733336dab21a05cdec343144600e964d2fcdabaac0c0269874b2a" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314t-win32.whl", hash = "sha256:8c50dd1fc8826f5b26a5ee4d77ca55d88a895f4e4819c7ecc2a9f5905047a443" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314t-win_amd64.whl", hash = "sha256:fcf92bee92742edd401ba41135185866f7026c502617f422eb432cfeca4fe236" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/numpy/2.4.2/numpy-2.4.2-cp314-cp314t-win_arm64.whl", hash = "sha256:1f92f53998a17265194018d1cc321b2e96e900ca52d54c7c77837b71b9465181" },
+]
+
+[[package]]
+name = "openpyxl"
+version = "3.1.5"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "et-xmlfile" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/openpyxl/3.1.5/openpyxl-3.1.5.tar.gz", hash = "sha256:cf0e3cf56142039133628b5acffe8ef0c12bc902d2aadd3e0fe5878dc08d1050" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/openpyxl/3.1.5/openpyxl-3.1.5-py2.py3-none-any.whl", hash = "sha256:5282c12b107bffeef825f4617dc029afaf41d0ea60823bbb665ef3079dc79de2" },
+]
+
+[[package]]
+name = "outreach-api-client"
+version = "0.1.22"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "pandas" },
+    { name = "requests" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/outreach-api-client/0.1.22/outreach_api_client-0.1.22.tar.gz", hash = "sha256:02e607aa1ed35b0edcb386c59cfe8ad94216f0017937a90f2f75726d04751a3c" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/outreach-api-client/0.1.22/outreach_api_client-0.1.22-py3-none-any.whl", hash = "sha256:6609fc3588dbc6cc27f3a90914b5dba1eb3c4b2444a14bffe35d18d73895f3f2" },
+]
+
+[[package]]
+name = "pandas"
+version = "2.3.3"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "numpy" },
+    { name = "python-dateutil" },
+    { name = "pytz" },
+    { name = "tzdata" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3.tar.gz", hash = "sha256:e05e1af93b977f7eafa636d043f9f94c7ee3ac81af99c13508215942e64c993b" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:56851a737e3470de7fa88e6131f41281ed440d29a9268dcbf0002da5ac366713" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:bdcd9d1167f4885211e401b3036c0c8d9e274eee67ea8d0758a256d60704cfe8" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:e32e7cc9af0f1cc15548288a51a3b681cc2a219faa838e995f7dc53dbab1062d" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:318d77e0e42a628c04dc56bcef4b40de67918f7041c2b061af1da41dcff670ac" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:4e0a175408804d566144e170d0476b15d78458795bb18f1304fb94160cabf40c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:93c2d9ab0fc11822b5eece72ec9587e172f63cff87c00b062f6e37448ced4493" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp313-cp313-win_amd64.whl", hash = "sha256:f8bfc0e12dc78f777f323f55c58649591b2cd0c43534e8355c51d3fede5f4dee" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp313-cp313t-macosx_10_13_x86_64.whl", hash = "sha256:75ea25f9529fdec2d2e93a42c523962261e567d250b0013b16210e1d40d7c2e5" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp313-cp313t-macosx_11_0_arm64.whl", hash = "sha256:74ecdf1d301e812db96a465a525952f4dde225fdb6d8e5a521d47e1f42041e21" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp313-cp313t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:6435cb949cb34ec11cc9860246ccb2fdc9ecd742c12d3304989017d53f039a78" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp313-cp313t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:900f47d8f20860de523a1ac881c4c36d65efcb2eb850e6948140fa781736e110" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp313-cp313t-musllinux_1_2_aarch64.whl", hash = "sha256:a45c765238e2ed7d7c608fc5bc4a6f88b642f2f01e70c0c23d2224dd21829d86" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp313-cp313t-musllinux_1_2_x86_64.whl", hash = "sha256:c4fc4c21971a1a9f4bdb4c73978c7f7256caa3e62b323f70d6cb80db583350bc" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp314-cp314-macosx_10_13_x86_64.whl", hash = "sha256:ee15f284898e7b246df8087fc82b87b01686f98ee67d85a17b7ab44143a3a9a0" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:1611aedd912e1ff81ff41c745822980c49ce4a7907537be8692c8dbc31924593" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:6d2cefc361461662ac48810cb14365a365ce864afe85ef1f447ff5a1e99ea81c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:ee67acbbf05014ea6c763beb097e03cd629961c8a632075eeb34247120abcb4b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:c46467899aaa4da076d5abc11084634e2d197e9460643dd455ac3db5856b24d6" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:6253c72c6a1d990a410bc7de641d34053364ef8bcd3126f7e7450125887dffe3" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp314-cp314-win_amd64.whl", hash = "sha256:1b07204a219b3b7350abaae088f451860223a52cfb8a6c53358e7948735158e5" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp314-cp314t-macosx_10_13_x86_64.whl", hash = "sha256:2462b1a365b6109d275250baaae7b760fd25c726aaca0054649286bcfbb3e8ec" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:0242fe9a49aa8b4d78a4fa03acb397a58833ef6199e9aa40a95f027bb3a1b6e7" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp314-cp314t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:a21d830e78df0a515db2b3d2f5570610f5e6bd2e27749770e8bb7b524b89b450" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp314-cp314t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:2e3ebdb170b5ef78f19bfb71b0dc5dc58775032361fa188e814959b74d726dd5" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:d051c0e065b94b7a3cea50eb1ec32e912cd96dba41647eb24104b6c6c14c5788" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas/2.3.3/pandas-2.3.3-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:3869faf4bd07b3b66a9f462417d0ca3a9df29a9f6abd5d0d0dbab15dac7abe87" },
+]
+
+[[package]]
+name = "pandas-stubs"
+version = "3.0.0.260204"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "numpy" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas-stubs/3.0.0.260204/pandas_stubs-3.0.0.260204.tar.gz", hash = "sha256:bf9294b76352effcffa9cb85edf0bed1339a7ec0c30b8e1ac3d66b4228f1fbc3" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pandas-stubs/3.0.0.260204/pandas_stubs-3.0.0.260204-py3-none-any.whl", hash = "sha256:5ab9e4d55a6e2752e9720828564af40d48c4f709e6a2c69b743014a6fcb6c241" },
+]
+
+[[package]]
+name = "paramiko"
+version = "4.0.0"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "bcrypt" },
+    { name = "cryptography" },
+    { name = "invoke" },
+    { name = "pynacl" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/paramiko/4.0.0/paramiko-4.0.0.tar.gz", hash = "sha256:6a25f07b380cc9c9a88d2b920ad37167ac4667f8d9886ccebd8f90f654b5d69f" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/paramiko/4.0.0/paramiko-4.0.0-py3-none-any.whl", hash = "sha256:0e20e00ac666503bf0b4eda3b6d833465a2b7aff2e2b3d79a8bba5ef144ee3b9" },
+]
+
+[[package]]
+name = "psycopg2-binary"
+version = "2.9.11"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2-binary-2.9.11.tar.gz", hash = "sha256:b6aed9e096bf63f9e75edf2581aa9a7e7186d97ab5c177aa6c87797cd591236c" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:b8fb3db325435d34235b044b199e56cdf9ff41223a4b9752e8576465170bb38c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:366df99e710a2acd90efed3764bb1e28df6c675d33a7fb40df9b7281694432ee" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:8c55b385daa2f92cb64b12ec4536c66954ac53654c7f15a203578da4e78105c0" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp313-cp313-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl", hash = "sha256:c0377174bf1dd416993d16edc15357f6eb17ac998244cca19bc67cdc0e2e5766" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:5c6ff3335ce08c75afaed19e08699e8aacf95d4a260b495a4a8545244fe2ceb3" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp313-cp313-manylinux_2_38_riscv64.manylinux_2_39_riscv64.whl", hash = "sha256:84011ba3109e06ac412f95399b704d3d6950e386b7994475b231cf61eec2fc1f" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:ba34475ceb08cccbdd98f6b46916917ae6eeb92b5ae111df10b544c3a4621dc4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp313-cp313-musllinux_1_2_ppc64le.whl", hash = "sha256:b31e90fdd0f968c2de3b26ab014314fe814225b6c324f770952f7d38abf17e3c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp313-cp313-musllinux_1_2_riscv64.whl", hash = "sha256:d526864e0f67f74937a8fce859bd56c979f5e2ec57ca7c627f5f1071ef7fee60" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:04195548662fa544626c8ea0f06561eb6203f1984ba5b4562764fbeb4c3d14b1" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp313-cp313-win_amd64.whl", hash = "sha256:efff12b432179443f54e230fdf60de1f6cc726b6c832db8701227d089310e8aa" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp314-cp314-macosx_10_13_x86_64.whl", hash = "sha256:92e3b669236327083a2e33ccfa0d320dd01b9803b3e14dd986a4fc54aa00f4e1" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:e0deeb03da539fa3577fcb0b3f2554a97f7e5477c246098dbb18091a4a01c16f" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:9b52a3f9bb540a3e4ec0f6ba6d31339727b2950c9772850d6545b7eae0b9d7c5" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp314-cp314-manylinux2014_ppc64le.manylinux_2_17_ppc64le.whl", hash = "sha256:db4fd476874ccfdbb630a54426964959e58da4c61c9feba73e6094d51303d7d8" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:47f212c1d3be608a12937cc131bd85502954398aaa1320cb4c14421a0ffccf4c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp314-cp314-manylinux_2_38_riscv64.manylinux_2_39_riscv64.whl", hash = "sha256:e35b7abae2b0adab776add56111df1735ccc71406e56203515e228a8dc07089f" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:fcf21be3ce5f5659daefd2b3b3b6e4727b028221ddc94e6c1523425579664747" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp314-cp314-musllinux_1_2_ppc64le.whl", hash = "sha256:9bd81e64e8de111237737b29d68039b9c813bdf520156af36d26819c9a979e5f" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp314-cp314-musllinux_1_2_riscv64.whl", hash = "sha256:32770a4d666fbdafab017086655bcddab791d7cb260a16679cc5a7338b64343b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:c3cb3a676873d7506825221045bd70e0427c905b9c8ee8d6acd70cfcbd6e576d" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/psycopg2-binary/2.9.11/psycopg2_binary-2.9.11-cp314-cp314-win_amd64.whl", hash = "sha256:4012c9c954dfaccd28f94e84ab9f94e12df76b4afb22331b1f0d3154893a6316" },
+]
+
+[[package]]
+name = "pycparser"
+version = "3.0"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pycparser/3.0/pycparser-3.0.tar.gz", hash = "sha256:600f49d217304a5902ac3c37e1281c9fe94e4d0489de643a9504c5cdfdfc6b29" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pycparser/3.0/pycparser-3.0-py3-none-any.whl", hash = "sha256:b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992" },
+]
+
+[[package]]
+name = "pymongo"
+version = "4.16.0"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "dnspython" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0.tar.gz", hash = "sha256:8ba8405065f6e258a6f872fe62d797a28f383a12178c7153c01ed04e845c600c" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:d15f060bc6d0964a8bb70aba8f0cb6d11ae99715438f640cff11bbcf172eb0e8" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:4a19ea46a0fe71248965305a020bc076a163311aefbaa1d83e47d06fa30ac747" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp313-cp313-manylinux1_i686.manylinux_2_28_i686.manylinux_2_5_i686.whl", hash = "sha256:311d4549d6bf1f8c61d025965aebb5ba29d1481dc6471693ab91610aaffbc0eb" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:46ffb728d92dd5b09fc034ed91acf5595657c7ca17d4cf3751322cd554153c17" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp313-cp313-manylinux2014_ppc64le.manylinux_2_17_ppc64le.manylinux_2_28_ppc64le.whl", hash = "sha256:acda193f440dd88c2023cb00aa8bd7b93a9df59978306d14d87a8b12fe426b05" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp313-cp313-manylinux2014_s390x.manylinux_2_17_s390x.manylinux_2_28_s390x.whl", hash = "sha256:5d9fdb386cf958e6ef6ff537d6149be7edb76c3268cd6833e6c36aa447e4443f" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:91899dd7fb9a8c50f09c3c1cf0cb73bfbe2737f511f641f19b9650deb61c00ca" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp313-cp313-win32.whl", hash = "sha256:2cd60cd1e05de7f01927f8e25ca26b3ea2c09de8723241e5d3bcfdc70eaff76b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp313-cp313-win_amd64.whl", hash = "sha256:3ead8a0050c53eaa55935895d6919d393d0328ec24b2b9115bdbe881aa222673" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp313-cp313-win_arm64.whl", hash = "sha256:dbbc5b254c36c37d10abb50e899bc3939bbb7ab1e7c659614409af99bd3e7675" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314-macosx_10_15_x86_64.whl", hash = "sha256:8a254d49a9ffe9d7f888e3c677eed3729b14ce85abb08cd74732cead6ccc3c66" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:a1bf44e13cf2d44d2ea2e928a8140d5d667304abe1a61c4d55b4906f389fbe64" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314-manylinux1_i686.manylinux_2_28_i686.manylinux_2_5_i686.whl", hash = "sha256:f1c5f1f818b669875d191323a48912d3fcd2e4906410e8297bb09ac50c4d5ccc" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:77cfd37a43a53b02b7bd930457c7994c924ad8bbe8dff91817904bcbf291b371" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314-manylinux2014_ppc64le.manylinux_2_17_ppc64le.manylinux_2_28_ppc64le.whl", hash = "sha256:36ef2fee50eee669587d742fb456e349634b4fcf8926208766078b089054b24b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314-manylinux2014_s390x.manylinux_2_17_s390x.manylinux_2_28_s390x.whl", hash = "sha256:55f8d5a6fe2fa0b823674db2293f92d74cd5f970bc0360f409a1fc21003862d3" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:9caacac0dd105e2555521002e2d17afc08665187017b466b5753e84c016628e6" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314-win32.whl", hash = "sha256:c789236366525c3ee3cd6e4e450a9ff629a7d1f4d88b8e18a0aea0615fd7ecf8" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314-win_amd64.whl", hash = "sha256:2b0714d7764efb29bf9d3c51c964aed7c4c7237b341f9346f15ceaf8321fdb35" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314-win_arm64.whl", hash = "sha256:12762e7cc0f8374a8cae3b9f9ed8dabb5d438c7b33329232dd9b7de783454033" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314t-macosx_10_15_x86_64.whl", hash = "sha256:1c01e8a7cd0ea66baf64a118005535ab5bf9f9eb63a1b50ac3935dccf9a54abe" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:4c4872299ebe315a79f7f922051061634a64fda95b6b17677ba57ef00b2ba2a4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314t-manylinux1_i686.manylinux_2_28_i686.manylinux_2_5_i686.whl", hash = "sha256:78037d02389745e247fe5ab0bcad5d1ab30726eaac3ad79219c7d6bbb07eec53" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:c126fb72be2518395cc0465d4bae03125119136462e1945aea19840e45d89cfc" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314t-manylinux2014_ppc64le.manylinux_2_17_ppc64le.manylinux_2_28_ppc64le.whl", hash = "sha256:f3867dc225d9423c245a51eaac2cfcd53dde8e0a8d8090bb6aed6e31bd6c2d4f" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314t-manylinux2014_s390x.manylinux_2_17_s390x.manylinux_2_28_s390x.whl", hash = "sha256:f25001a955073b80510c0c3db0e043dbbc36904fd69e511c74e3d8640b8a5111" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:9d9885aad05f82fd7ea0c9ca505d60939746b39263fa273d0125170da8f59098" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314t-win32.whl", hash = "sha256:948152b30eddeae8355495f9943a3bf66b708295c0b9b6f467de1c620f215487" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314t-win_amd64.whl", hash = "sha256:f6e42c1bc985d9beee884780ae6048790eb4cd565c46251932906bdb1630034a" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pymongo/4.16.0/pymongo-4.16.0-cp314-cp314t-win_arm64.whl", hash = "sha256:6b2a20edb5452ac8daa395890eeb076c570790dfce6b7a44d788af74c2f8cf96" },
+]
+
+[[package]]
+name = "pynacl"
+version = "1.6.2"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "cffi", marker = "platform_python_implementation != 'PyPy'" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2.tar.gz", hash = "sha256:018494d6d696ae03c7e656e5e74cdfd8ea1326962cc401bcf018f1ed8436811c" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp314-cp314t-macosx_10_10_universal2.whl", hash = "sha256:622d7b07cc5c02c666795792931b50c91f3ce3c2649762efb1ef0d5684c81594" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:d071c6a9a4c94d79eb665db4ce5cedc537faf74f2355e4d502591d850d3913c0" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:fe9847ca47d287af41e82be1dd5e23023d3c31a951da134121ab02e42ac218c9" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp314-cp314t-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:04316d1fc625d860b6c162fff704eb8426b1a8bcd3abacea11142cbd99a6b574" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp314-cp314t-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:44081faff368d6c5553ccf55322ef2819abb40e25afaec7e740f159f74813634" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp314-cp314t-manylinux_2_34_aarch64.whl", hash = "sha256:a9f9932d8d2811ce1a8ffa79dcbdf3970e7355b5c8eb0c1a881a57e7f7d96e88" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp314-cp314t-manylinux_2_34_x86_64.whl", hash = "sha256:bc4a36b28dd72fb4845e5d8f9760610588a96d5a51f01d84d8c6ff9849968c14" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:3bffb6d0f6becacb6526f8f42adfb5efb26337056ee0831fb9a7044d1a964444" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:2fef529ef3ee487ad8113d287a593fa26f48ee3620d92ecc6f1d09ea38e0709b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp314-cp314t-win32.whl", hash = "sha256:a84bf1c20339d06dc0c85d9aea9637a24f718f375d861b2668b2f9f96fa51145" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp314-cp314t-win_amd64.whl", hash = "sha256:320ef68a41c87547c91a8b58903c9caa641ab01e8512ce291085b5fe2fcb7590" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp314-cp314t-win_arm64.whl", hash = "sha256:d29bfe37e20e015a7d8b23cfc8bd6aa7909c92a1b8f41ee416bbb3e79ef182b2" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp38-abi3-macosx_10_10_universal2.whl", hash = "sha256:c949ea47e4206af7c8f604b8278093b674f7c79ed0d4719cc836902bf4517465" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp38-abi3-manylinux2014_aarch64.manylinux_2_17_aarch64.whl", hash = "sha256:8845c0631c0be43abdd865511c41eab235e0be69c81dc66a50911594198679b0" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:22de65bb9010a725b0dac248f353bb072969c94fa8d6b1f34b87d7953cf7bbe4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp38-abi3-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:46065496ab748469cdd999246d17e301b2c24ae2fdf739132e580a0e94c94a87" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp38-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:8a66d6fb6ae7661c58995f9c6435bda2b1e68b54b598a6a10247bfcdadac996c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp38-abi3-manylinux_2_34_aarch64.whl", hash = "sha256:26bfcd00dcf2cf160f122186af731ae30ab120c18e8375684ec2670dccd28130" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp38-abi3-manylinux_2_34_x86_64.whl", hash = "sha256:c8a231e36ec2cab018c4ad4358c386e36eede0319a0c41fed24f840b1dac59f6" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp38-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:68be3a09455743ff9505491220b64440ced8973fe930f270c8e07ccfa25b1f9e" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp38-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:8b097553b380236d51ed11356c953bf8ce36a29a3e596e934ecabe76c985a577" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp38-abi3-win32.whl", hash = "sha256:5811c72b473b2f38f7e2a3dc4f8642e3a3e9b5e7317266e4ced1fba85cae41aa" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp38-abi3-win_amd64.whl", hash = "sha256:62985f233210dee6548c223301b6c25440852e13d59a8b81490203c3227c5ba0" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pynacl/1.6.2/pynacl-1.6.2-cp38-abi3-win_arm64.whl", hash = "sha256:834a43af110f743a754448463e8fd61259cd4ab5bbedcf70f9dabad1d28a394c" },
+]
+
+[[package]]
+name = "pysftp"
+version = "0.2.9"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "paramiko" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pysftp/0.2.9/pysftp-0.2.9.tar.gz", hash = "sha256:fbf55a802e74d663673400acd92d5373c1c7ee94d765b428d9f977567ac4854a" }
+
+[[package]]
+name = "python-dateutil"
+version = "2.9.0.post0"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "six" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/python-dateutil/2.9.0.post0/python-dateutil-2.9.0.post0.tar.gz", hash = "sha256:37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/python-dateutil/2.9.0.post0/python_dateutil-2.9.0.post0-py2.py3-none-any.whl", hash = "sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427" },
+]
+
+[[package]]
+name = "pytz"
+version = "2026.1.post1"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pytz/2026.1.post1/pytz-2026.1.post1.tar.gz", hash = "sha256:3378dde6a0c3d26719182142c56e60c7f9af7e968076f31aae569d72a0358ee1" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pytz/2026.1.post1/pytz-2026.1.post1-py2.py3-none-any.whl", hash = "sha256:f2fd16142fda348286a75e1a524be810bb05d444e5a081f37f7affc635035f7a" },
+]
+
+[[package]]
+name = "pyyaml"
+version = "6.0.3"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3.tar.gz", hash = "sha256:d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:8da9669d359f02c0b91ccc01cac4a67f16afec0dac22c2ad09f46bee0697eba8" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:2283a07e2c21a2aa78d9c4442724ec1eb15f5e42a723b99cb3d822d48f5f7ad1" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:ee2922902c45ae8ccada2c5b501ab86c36525b883eff4255313a253a3160861c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp313-cp313-manylinux2014_s390x.manylinux_2_17_s390x.manylinux_2_28_s390x.whl", hash = "sha256:a33284e20b78bd4a18c8c2282d549d10bc8408a2a7ff57653c0cf0b9be0afce5" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:0f29edc409a6392443abf94b9cf89ce99889a1dd5376d94316ae5145dfedd5d6" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:f7057c9a337546edc7973c0d3ba84ddcdf0daa14533c2065749c9075001090e6" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:eda16858a3cab07b80edaf74336ece1f986ba330fdb8ee0d6c0d68fe82bc96be" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp313-cp313-win32.whl", hash = "sha256:d0eae10f8159e8fdad514efdc92d74fd8d682c933a6dd088030f3834bc8e6b26" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp313-cp313-win_amd64.whl", hash = "sha256:79005a0d97d5ddabfeeea4cf676af11e647e41d81c9a7722a193022accdb6b7c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp313-cp313-win_arm64.whl", hash = "sha256:5498cd1645aa724a7c71c8f378eb29ebe23da2fc0d7a08071d89469bf1d2defb" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314-macosx_10_13_x86_64.whl", hash = "sha256:8d1fab6bb153a416f9aeb4b8763bc0f22a5586065f86f7664fc23339fc1c1fac" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:34d5fcd24b8445fadc33f9cf348c1047101756fd760b4dacb5c3e99755703310" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:501a031947e3a9025ed4405a168e6ef5ae3126c59f90ce0cd6f2bfc477be31b7" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314-manylinux2014_s390x.manylinux_2_17_s390x.manylinux_2_28_s390x.whl", hash = "sha256:b3bc83488de33889877a0f2543ade9f70c67d66d9ebb4ac959502e12de895788" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:c458b6d084f9b935061bc36216e8a69a7e293a2f1e68bf956dcd9e6cbcd143f5" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:7c6610def4f163542a622a73fb39f534f8c101d690126992300bf3207eab9764" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:5190d403f121660ce8d1d2c1bb2ef1bd05b5f68533fc5c2ea899bd15f4399b35" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314-win_amd64.whl", hash = "sha256:4a2e8cebe2ff6ab7d1050ecd59c25d4c8bd7e6f400f5f82b96557ac0abafd0ac" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314-win_arm64.whl", hash = "sha256:93dda82c9c22deb0a405ea4dc5f2d0cda384168e466364dec6255b293923b2f3" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314t-macosx_10_13_x86_64.whl", hash = "sha256:02893d100e99e03eda1c8fd5c441d8c60103fd175728e23e431db1b589cf5ab3" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:c1ff362665ae507275af2853520967820d9124984e0f7466736aea23d8611fba" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:6adc77889b628398debc7b65c073bcb99c4a0237b248cacaf3fe8a557563ef6c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314t-manylinux2014_s390x.manylinux_2_17_s390x.manylinux_2_28_s390x.whl", hash = "sha256:a80cb027f6b349846a3bf6d73b5e95e782175e52f22108cfa17876aaeff93702" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:00c4bdeba853cc34e7dd471f16b4114f4162dc03e6b7afcc2128711f0eca823c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:66e1674c3ef6f541c35191caae2d429b967b99e02040f5ba928632d9a7f0f065" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:16249ee61e95f858e83976573de0f5b2893b3677ba71c9dd36b9cf8be9ac6d65" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314t-win_amd64.whl", hash = "sha256:4ad1906908f2f5ae4e5a8ddfce73c320c2a1429ec52eafd27138b7f1cbe341c9" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/pyyaml/6.0.3/pyyaml-6.0.3-cp314-cp314t-win_arm64.whl", hash = "sha256:ebc55a14a21cb14062aa4162f906cd962b28e2e9ea38f9b4391244cd8de4ae0b" },
+]
+
+[[package]]
+name = "refill-optimization"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "cmappclient" },
+    { name = "cmappmongo" },
+    { name = "mw-vault" },
+    { name = "mwemailer" },
+    { name = "niceclient" },
+    { name = "openpyxl" },
+    { name = "outreach-api-client" },
+    { name = "pandas" },
+    { name = "pandas-stubs" },
+    { name = "psycopg2-binary" },
+    { name = "pysftp" },
+    { name = "pyyaml" },
+    { name = "s3path" },
+    { name = "sqlalchemy" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "cmappclient", specifier = ">=2.2.7" },
+    { name = "cmappmongo", specifier = ">=1.1.13" },
+    { name = "mw-vault", specifier = ">=1.0.1" },
+    { name = "mwemailer", specifier = ">=0.0.2" },
+    { name = "niceclient", specifier = ">=0.2.1" },
+    { name = "openpyxl", specifier = ">=3.1.2" },
+    { name = "outreach-api-client", specifier = ">=0.1.1" },
+    { name = "pandas", specifier = ">=1.4.2,<3.0.0" },
+    { name = "pandas-stubs", specifier = ">=1.2.0.61" },
+    { name = "psycopg2-binary", specifier = ">=2.9.10" },
+    { name = "pysftp", specifier = ">=0.2.9" },
+    { name = "pyyaml", specifier = ">=6.0" },
+    { name = "s3path", specifier = ">=0.4.1" },
+    { name = "sqlalchemy", specifier = ">=2.0.48" },
+]
+
+[[package]]
+name = "requests"
+version = "2.32.5"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "certifi" },
+    { name = "charset-normalizer" },
+    { name = "idna" },
+    { name = "urllib3" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/requests/2.32.5/requests-2.32.5.tar.gz", hash = "sha256:dbba0bac56e100853db0ea71b82b4dfd5fe2bf6d3754a8893c3af500cec7d7cf" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/requests/2.32.5/requests-2.32.5-py3-none-any.whl", hash = "sha256:2462f94637a34fd532264295e186976db0f5d453d1cdd31473c85a6a161affb6" },
+]
+
+[[package]]
+name = "s3path"
+version = "0.6.5"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "boto3" },
+    { name = "smart-open" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/s3path/0.6.5/s3path-0.6.5.tar.gz", hash = "sha256:91397e556f8fd9b000b8fc7eda876384ce279e7c8e77a3cb22407a5c9296393c" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/s3path/0.6.5/s3path-0.6.5-py3-none-any.whl", hash = "sha256:0d2beb07a41558dada544c427d2c590afd50d510fbe8b7d8940fa6e9de9dce70" },
+]
+
+[[package]]
+name = "s3transfer"
+version = "0.16.0"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "botocore" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/s3transfer/0.16.0/s3transfer-0.16.0.tar.gz", hash = "sha256:8e990f13268025792229cd52fa10cb7163744bf56e719e0b9cb925ab79abf920" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/s3transfer/0.16.0/s3transfer-0.16.0-py3-none-any.whl", hash = "sha256:18e25d66fed509e3868dc1572b3f427ff947dd2c56f844a5bf09481ad3f3b2fe" },
+]
+
+[[package]]
+name = "six"
+version = "1.17.0"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/six/1.17.0/six-1.17.0.tar.gz", hash = "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/six/1.17.0/six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274" },
+]
+
+[[package]]
+name = "smart-open"
+version = "7.5.1"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "wrapt" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/smart-open/7.5.1/smart_open-7.5.1.tar.gz", hash = "sha256:3f08e16827c4733699e6b2cc40328a3568f900cb12ad9a3ad233ba6c872d9fe7" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/smart-open/7.5.1/smart_open-7.5.1-py3-none-any.whl", hash = "sha256:3e07cbbd9c8a908bcb8e25d48becf1a5cbb4886fa975e9f34c672ed171df2318" },
+]
+
+[[package]]
+name = "sqlalchemy"
+version = "2.0.48"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+dependencies = [
+    { name = "greenlet", marker = "platform_machine == 'AMD64' or platform_machine == 'WIN32' or platform_machine == 'aarch64' or platform_machine == 'amd64' or platform_machine == 'ppc64le' or platform_machine == 'win32' or platform_machine == 'x86_64'" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48.tar.gz", hash = "sha256:5ca74f37f3369b45e1f6b7b06afb182af1fd5dde009e4ffd831830d98cbe5fe7" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:e3070c03701037aa418b55d36532ecb8f8446ed0135acb71c678dbdf12f5b6e4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:2645b7d8a738763b664a12a1542c89c940daa55196e8d73e55b169cc5c99f65f" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:b19151e76620a412c2ac1c6f977ab1b9fa7ad43140178345136456d5265b32ed" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:5b193a7e29fd9fa56e502920dca47dffe60f97c863494946bd698c6058a55658" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:36ac4ddc3d33e852da9cb00ffb08cea62ca05c39711dc67062ca2bb1fae35fd8" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp313-cp313-win32.whl", hash = "sha256:389b984139278f97757ea9b08993e7b9d1142912e046ab7d82b3fbaeb0209131" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp313-cp313-win_amd64.whl", hash = "sha256:d612c976cbc2d17edfcc4c006874b764e85e990c29ce9bd411f926bbfb02b9a2" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp313-cp313t-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:69f5bc24904d3bc3640961cddd2523e361257ef68585d6e364166dfbe8c78fae" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp313-cp313t-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:fd08b90d211c086181caed76931ecfa2bdfc83eea3cfccdb0f82abc6c4b876cb" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp313-cp313t-musllinux_1_2_aarch64.whl", hash = "sha256:1ccd42229aaac2df431562117ac7e667d702e8e44afdb6cf0e50fa3f18160f0b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp313-cp313t-musllinux_1_2_x86_64.whl", hash = "sha256:f0dcbc588cd5b725162c076eb9119342f6579c7f7f55057bb7e3c6ff27e13121" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp313-cp313t-win32.whl", hash = "sha256:9764014ef5e58aab76220c5664abb5d47d5bc858d9debf821e55cfdd0f128485" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp313-cp313t-win_amd64.whl", hash = "sha256:e2f35b4cccd9ed286ad62e0a3c3ac21e06c02abc60e20aa51a3e305a30f5fa79" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:e2d0d88686e3d35a76f3e15a34e8c12d73fc94c1dea1cd55782e695cc14086dd" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:49b7bddc1eebf011ea5ab722fdbe67a401caa34a350d278cc7733c0e88fecb1f" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:426c5ca86415d9b8945c7073597e10de9644802e2ff502b8e1f11a7a2642856b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:288937433bd44e3990e7da2402fabc44a3c6c25d3704da066b85b89a85474ae0" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:8183dc57ae7d9edc1346e007e840a9f3d6aa7b7f165203a99e16f447150140d2" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp314-cp314-win32.whl", hash = "sha256:1182437cb2d97988cfea04cf6cdc0b0bb9c74f4d56ec3d08b81e23d621a28cc6" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp314-cp314-win_amd64.whl", hash = "sha256:144921da96c08feb9e2b052c5c5c1d0d151a292c6135623c6b2c041f2a45f9e0" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:5aee45fd2c6c0f2b9cdddf48c48535e7471e42d6fb81adfde801da0bd5b93241" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp314-cp314t-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:7cddca31edf8b0653090cbb54562ca027c421c58ddde2c0685f49ff56a1690e0" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:7a936f1bb23d370b7c8cc079d5fce4c7d18da87a33c6744e51a93b0f9e97e9b3" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:e004aa9248e8cb0a5f9b96d003ca7c1c0a5da8decd1066e7b53f59eb8ce7c62b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp314-cp314t-win32.whl", hash = "sha256:b8438ec5594980d405251451c5b7ea9aa58dda38eb7ac35fb7e4c696712ee24f" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-cp314-cp314t-win_amd64.whl", hash = "sha256:d854b3970067297f3a7fbd7a4683587134aa9b3877ee15aa29eea478dc68f933" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/sqlalchemy/2.0.48/sqlalchemy-2.0.48-py3-none-any.whl", hash = "sha256:a66fe406437dd65cacd96a72689a3aaaecaebbcd62d81c5ac1c0fdbeac835096" },
+]
+
+[[package]]
+name = "typing-extensions"
+version = "4.15.0"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/typing-extensions/4.15.0/typing_extensions-4.15.0.tar.gz", hash = "sha256:0cea48d173cc12fa28ecabc3b837ea3cf6f38c6d1136f85cbaaf598984861466" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/typing-extensions/4.15.0/typing_extensions-4.15.0-py3-none-any.whl", hash = "sha256:f0fa19c6845758ab08074a0cfa8b7aecb71c999ca73d62883bc25cc018c4e548" },
+]
+
+[[package]]
+name = "tzdata"
+version = "2025.3"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/tzdata/2025.3/tzdata-2025.3.tar.gz", hash = "sha256:de39c2ca5dc7b0344f2eba86f49d614019d29f060fc4ebc8a417896a620b56a7" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/tzdata/2025.3/tzdata-2025.3-py2.py3-none-any.whl", hash = "sha256:06a47e5700f3081aab02b2e513160914ff0694bce9947d6b76ebd6bf57cfc5d1" },
+]
+
+[[package]]
+name = "urllib3"
+version = "2.6.3"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/urllib3/2.6.3/urllib3-2.6.3.tar.gz", hash = "sha256:1b62b6884944a57dbe321509ab94fd4d3b307075e0c2eae991ac71ee15ad38ed" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/urllib3/2.6.3/urllib3-2.6.3-py3-none-any.whl", hash = "sha256:bf272323e553dfb2e87d9bfd225ca7b0f467b919d7bbd355436d3fd37cb0acd4" },
+]
+
+[[package]]
+name = "wrapt"
+version = "2.1.1"
+source = { registry = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/" }
+sdist = { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1.tar.gz", hash = "sha256:5fdcb09bf6db023d88f312bd0767594b414655d58090fc1c46b3414415f67fac" }
+wheels = [
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:ce9646e17fa7c3e2e7a87e696c7de66512c2b4f789a8db95c613588985a2e139" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:428cfc801925454395aa468ba7ddb3ed63dc0d881df7b81626cdd433b4e2b11b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:5797f65e4d58065a49088c3b32af5410751cd485e83ba89e5a45e2aa8905af98" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:5a2db44a71202c5ae4bb5f27c6d3afbc5b23053f2e7e78aa29704541b5dad789" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:8d5350c3590af09c1703dd60ec78a7370c0186e11eaafb9dda025a30eee6492d" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:2d9b076411bed964e752c01b49fd224cc385f3a96f520c797d38412d70d08359" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313-win32.whl", hash = "sha256:0bb7207130ce6486727baa85373503bf3334cc28016f6928a0fa7e19d7ecdc06" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313-win_amd64.whl", hash = "sha256:cbfee35c711046b15147b0ae7db9b976f01c9520e6636d992cd9e69e5e2b03b1" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313-win_arm64.whl", hash = "sha256:7d2756061022aebbf57ba14af9c16e8044e055c22d38de7bf40d92b565ecd2b0" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313t-macosx_10_13_x86_64.whl", hash = "sha256:4814a3e58bc6971e46baa910ecee69699110a2bf06c201e24277c65115a20c20" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313t-macosx_11_0_arm64.whl", hash = "sha256:106c5123232ab9b9f4903692e1fa0bdc231510098f04c13c3081f8ad71c3d612" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313t-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:1a40b83ff2535e6e56f190aff123821eea89a24c589f7af33413b9c19eb2c738" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313t-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:789cea26e740d71cf1882e3a42bb29052bc4ada15770c90072cb47bf73fb3dbf" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313t-musllinux_1_2_aarch64.whl", hash = "sha256:ba49c14222d5e5c0ee394495a8655e991dc06cbca5398153aefa5ac08cd6ccd7" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313t-musllinux_1_2_x86_64.whl", hash = "sha256:ac8cda531fe55be838a17c62c806824472bb962b3afa47ecbd59b27b78496f4e" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313t-win32.whl", hash = "sha256:b8af75fe20d381dd5bcc9db2e86a86d7fcfbf615383a7147b85da97c1182225b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313t-win_amd64.whl", hash = "sha256:45c5631c9b6c792b78be2d7352129f776dd72c605be2c3a4e9be346be8376d83" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp313-cp313t-win_arm64.whl", hash = "sha256:da815b9263947ac98d088b6414ac83507809a1d385e4632d9489867228d6d81c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314-macosx_10_15_x86_64.whl", hash = "sha256:9aa1765054245bb01a37f615503290d4e207e3fd59226e78341afb587e9c1236" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:feff14b63a6d86c1eee33a57f77573649f2550935981625be7ff3cb7342efe05" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:81fc5f22d5fcfdbabde96bb3f5379b9f4476d05c6d524d7259dc5dfb501d3281" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:951b228ecf66def855d22e006ab9a1fc12535111ae7db2ec576c728f8ddb39e8" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:0ddf582a95641b9a8c8bd643e83f34ecbbfe1b68bc3850093605e469ab680ae3" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:fc5c500966bf48913f795f1984704e6d452ba2414207b15e1f8c339a059d5b16" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314-win32.whl", hash = "sha256:4aa4baadb1f94b71151b8e44a0c044f6af37396c3b8bcd474b78b49e2130a23b" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314-win_amd64.whl", hash = "sha256:860e9d3fd81816a9f4e40812f28be4439ab01f260603c749d14be3c0a1170d19" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314-win_arm64.whl", hash = "sha256:3c59e103017a2c1ea0ddf589cbefd63f91081d7ce9d491d69ff2512bb1157e23" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314t-macosx_10_15_x86_64.whl", hash = "sha256:9fa7c7e1bee9278fc4f5dd8275bc8d25493281a8ec6c61959e37cc46acf02007" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:39c35e12e8215628984248bd9c8897ce0a474be2a773db207eb93414219d8469" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314t-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl", hash = "sha256:94ded4540cac9125eaa8ddf5f651a7ec0da6f5b9f248fe0347b597098f8ec14c" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314t-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:da0af328373f97ed9bdfea24549ac1b944096a5a71b30e41c9b8b53ab3eec04a" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:4ad839b55f0bf235f8e337ce060572d7a06592592f600f3a3029168e838469d3" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:0d89c49356e5e2a50fa86b40e0510082abcd0530f926cbd71cf25bee6b9d82d7" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314t-win32.whl", hash = "sha256:f4c7dd22cf7f36aafe772f3d88656559205c3af1b7900adfccb70edeb0d2abc4" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314t-win_amd64.whl", hash = "sha256:f76bc12c583ab01e73ba0ea585465a41e48d968f6d1311b4daec4f8654e356e3" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-cp314-cp314t-win_arm64.whl", hash = "sha256:7ea74fc0bec172f1ae5f3505b6655c541786a5cabe4bbc0d9723a56ac32eb9b9" },
+    { url = "https://mw-data-dev-493679001282.d.codeartifact.us-west-2.amazonaws.com/pypi/mw-data-dev/simple/wrapt/2.1.1/wrapt-2.1.1-py3-none-any.whl", hash = "sha256:3b0f4629eb954394a3d7c7a1c8cca25f0b07cefe6aa8545e862e9778152de5b7" },
+]

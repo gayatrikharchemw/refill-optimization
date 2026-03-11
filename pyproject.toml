@@ -1,0 +1,30 @@
+[project]
+name = "refill-optimization"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pandas>=1.4.2,<3.0.0",
+    "pandas-stubs>=1.2.0.61",
+    "pysftp>=0.2.9",
+    "s3path>=0.4.1",
+    "cmappclient>=2.2.7",
+    "mw-vault>=1.0.1",
+    "pyyaml>=6.0",
+    "mwemailer>=0.0.2",
+    "cmappmongo>=1.1.13",
+    "openpyxl>=3.1.2",
+    "niceclient>=0.2.1",
+    "outreach-api-client>=0.1.1",
+    "psycopg2-binary>=2.9.10",
+    "sqlalchemy>=2.0.48",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ['utils', 'utils.reporting']
+
