@@ -15,14 +15,16 @@ def _add_total_and_pct(df, skip_pct_cols=None):
 
 
 def _week_summary(df):
+    total = df.groupby(pd.to_datetime(df["Lead Date"]).dt.date)["Document Key"].nunique().sum()
     accepted = (df["Refill Reminder Result"] == "Yes").sum()
     declined = (df["Refill Reminder Result"] == "No").sum()
-    blank = df["Refill Reminder Result"].isna().sum() + (df["Refill Reminder Result"].str.strip() == "").sum()
+    not_completed = total - accepted - declined
 
     return pd.Series({
         "Accepted": accepted,
         "Declined": declined,
-        "Not Completed": blank,
+        "Not Completed": not_completed,
+        "Total": total,
     })
 
 
@@ -51,7 +53,10 @@ def build_reports(refill_report: pd.DataFrame):
 
     result_summary_df = refill_report.groupby("Week").apply(_week_summary).reset_index()
     result_summary_df.insert(1, "Date Range", result_summary_df["Week"].map(week_to_date_range))
-    result_summary_df = _add_total_and_pct(result_summary_df.drop(columns=["Week"]))
+    result_summary_df = result_summary_df.drop(columns=["Week"])
+    for col in ["Accepted", "Declined", "Not Completed"]:
+        result_summary_df[f"% {col}"] = (result_summary_df[col] / result_summary_df["Total"] * 100).round(1)
+    result_summary_df["% Completed"] = (result_summary_df["% Accepted"] + result_summary_df["% Declined"]).round(1)
 
     decline_reason_counts = (
         refill_report.loc[refill_report["Refill Reminder Result"] == "No"]
