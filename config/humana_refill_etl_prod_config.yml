@@ -38,5 +38,10 @@ email:
     - "narega.nazarian@medwatchers.com"
     - "gayatrishriram.kharche@medwatchers.com"
   subject: "Refill Internal Report Stats"
+  no_post_completion_to:
+    - "narega.nazarian@medwatchers.com"
+    - "gayatrishriram.kharche@medwatchers.com"
+    - "Rohan.Shingre@medwatchers.com"
+    - "chris.francis@medwatchers.com"
 
 

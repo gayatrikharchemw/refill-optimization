@@ -36,7 +36,7 @@ def main(config: HumanaRefillConfig):
     save_df_to_csv(submission_result_counts, reports_dir / f"ytd_refill_submission_result_counts_{today}.csv")
     save_df_to_csv(agent_report, reports_dir / f"ytd_agent_refill_submission_rate_{today}.csv")
 
-    send_metric_alerts(submission_result_counts, config.config)
+    send_metric_alerts(submission_result_counts, result_summary_df, decline_reason_counts, config.config)
 
 
 if __name__ == "__main__":
