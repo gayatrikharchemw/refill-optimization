@@ -51,7 +51,7 @@ def build_reports(refill_report: pd.DataFrame):
 
     week_to_date_range = refill_report.drop_duplicates("Week").set_index("Week")["Date Range"]
 
-    result_summary_df = refill_report.groupby("Week").apply(_week_summary).reset_index()
+    result_summary_df = refill_report.groupby("Week").apply(_week_summary, include_groups=False).reset_index()
     result_summary_df.insert(1, "Date Range", result_summary_df["Week"].map(week_to_date_range))
     result_summary_df = result_summary_df.drop(columns=["Week"])
     for col in ["Accepted", "Declined", "Not Completed"]:
@@ -81,10 +81,12 @@ def build_reports(refill_report: pd.DataFrame):
         .reset_index()
     )
     ratio_key = "(Refilled on Own + No Post Completion) : (Refill Submitted + Out of Refill)"
-    week_ratios = accepted_df.groupby("Week").apply(_submission_week_summary)[ratio_key]
 
     submission_result_counts.insert(1, "Date Range", submission_result_counts["Week"].map(week_to_date_range))
-    submission_result_counts[ratio_key] = submission_result_counts["Week"].map(week_ratios)
+    refilled_on_own = submission_result_counts.get("Reminded - Refilled on own", 0)
+    no_post = submission_result_counts.get("No Post Completion Workflow", 0)
+    denom = submission_result_counts.get("Refill Submitted", 0) + submission_result_counts.get("Out of Refill - Refill Request", 0)
+    submission_result_counts[ratio_key] = ((refilled_on_own + no_post) / denom).where(denom > 0).round(2)
     submission_result_counts = _add_total_and_pct(submission_result_counts.drop(columns=["Week"]), skip_pct_cols=[ratio_key])
     submission_result_counts = submission_result_counts.rename(columns={"Total": "Total Accepted"})
 
@@ -108,6 +110,7 @@ def agent_summary(df):
             "% Refill Declined": round(declined / total * 100, 1) if total > 0 else None,
             "Reminded - Refilled on Own": refilled_on_own,
             "% Reminded - Refilled on Own (of Total)": round(refilled_on_own / total * 100, 1) if total > 0 else None,
+            "% Reminded - Refilled on Own (of Accepted)": round(refilled_on_own / accepted * 100, 1) if accepted > 0 else None,
         })
 
 def build_agent_report(refill_report: pd.DataFrame) -> pd.DataFrame:
@@ -118,11 +121,11 @@ def build_agent_report(refill_report: pd.DataFrame) -> pd.DataFrame:
         .groupby("Completion By Email")
         .apply(agent_summary)
         .reset_index()
-        .sort_values("% Reminded - Refilled on Own (of Total)", ascending=False)
+        .sort_values("% Reminded - Refilled on Own (of Accepted)", ascending=False)
         .reset_index(drop=True)
     )
 
-    pct_col = "% Reminded - Refilled on Own (of Total)"
+    pct_col = "% Reminded - Refilled on Own (of Accepted)"
     threshold = df[pct_col].quantile(0.75)
     df["Above 75th Percentile"] = df[pct_col] > threshold
 
