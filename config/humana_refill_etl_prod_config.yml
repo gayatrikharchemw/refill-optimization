@@ -30,4 +30,13 @@ outreach:
     db_name: outreach
     db_port: 5432
     vault_path: database/prod/mw/postgres/outreach/creds/rw
+email:
+  recipient_name: "Narega"
+  sender_name: "Gayatri"
+  from_address: etl-alerts@medwatchers.com
+  to:
+    - "narega.nazarian@medwatchers.com"
+    - "gayatrishriram.kharche@medwatchers.com"
+  subject: "Refill Internal Report Stats"
+
 

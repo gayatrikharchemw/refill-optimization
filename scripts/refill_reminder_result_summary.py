@@ -6,6 +6,7 @@ from utils.config_utils import HumanaRefillConfig
 from utils.date_util import get_current_pst_time
 from utils.file_utils import save_df_to_csv
 from utils.reporting import daily
+from utils.email_utils import send_metric_alerts
 from utils.reporting.refill_summary import build_agent_report, build_reports
 
 
@@ -34,6 +35,8 @@ def main(config: HumanaRefillConfig):
     save_df_to_csv(decline_reason_counts, reports_dir / f"ytd_decline_reason_counts_{today}.csv")
     save_df_to_csv(submission_result_counts, reports_dir / f"ytd_refill_submission_result_counts_{today}.csv")
     save_df_to_csv(agent_report, reports_dir / f"ytd_agent_refill_submission_rate_{today}.csv")
+
+    send_metric_alerts(submission_result_counts, config.config)
 
 
 if __name__ == "__main__":
