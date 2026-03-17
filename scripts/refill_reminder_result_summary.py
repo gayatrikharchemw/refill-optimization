@@ -1,3 +1,8 @@
+"""
+Usage:
+    uv run scripts/refill_reminder_result_summary.py config/humana_refill_etl_prod_config.yml
+    uv run scripts/refill_reminder_result_summary.py config/humana_refill_etl_prod_config.yml --etl-dir s3://humana-prod-data/2026/Refill/daily_refill_etl/
+"""
 import argparse
 import logging
 from pathlib import Path
