@@ -84,17 +84,17 @@ def send_metric_alerts(submission_result_counts: pd.DataFrame, result_summary_df
     no_post_col = "No Post Completion Workflow"
     if no_post_col in submission_result_counts.columns:
         no_post_count = int(curr[no_post_col])
-        if no_post_count > 50:
+        if no_post_count > 10:
             alert_html = f"""
             <p>Hi {email_config['recipient_name']},</p>
             <p>The <strong>No Post Completion Workflow</strong> count for the current week
-            (<strong>{curr_date_range}</strong>) has exceeded 50.</p>
+            (<strong>{curr_date_range}</strong>) has exceeded 10.</p>
             <p>Current count: <strong style="color:red">{no_post_count}</strong></p>
             <p>Thanks,<br>{email_config['sender_name']}</p>
             """
             emailer.send_email(
                 to_addresses=email_config["no_post_completion_to"],
-                subject=f"Refill Alert: No Post Completion Workflow above 50 ({curr_date_range})",
+                subject=f"Refill Alert: No Post Completion Workflow above 10 ({curr_date_range})",
                 html=alert_html,
             )
 

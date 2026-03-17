@@ -2,18 +2,26 @@ import argparse
 import logging
 from pathlib import Path
 
+from s3path import S3Path
+
 from utils.config_utils import HumanaRefillConfig
 from utils.date_util import get_current_pst_time
 from utils.file_utils import save_df_to_csv
 from utils.reporting import daily
 from utils.email_utils import send_metric_alerts
-from utils.reporting.refill_summary import build_agent_report, build_reports
+from utils.reporting.refill_summary import build_agent_report, build_reports, get_week_totals_from_transformed_claims
 
 
 logger = logging.getLogger(__name__)
 
 
-def main(config: HumanaRefillConfig):
+def _resolve_path(path_str: str):
+    if path_str.startswith("s3://"):
+        return S3Path("/" + path_str[5:])
+    return Path(path_str)
+
+
+def main(config: HumanaRefillConfig, etl_dir: str = None):
     now = get_current_pst_time()
     ytd_start = now.replace(month=1, day=1, hour=0, minute=0, second=0, microsecond=0)
 
@@ -25,7 +33,14 @@ def main(config: HumanaRefillConfig):
         end_date=now,
     )
 
-    result_summary_df, decline_reason_counts, submission_result_counts = build_reports(refill_report)
+    transformed_claims_files = []
+    if etl_dir:
+        base_dir = _resolve_path(etl_dir)
+        logger.info(f"Scanning {base_dir} for transformed_claims files...")
+        transformed_claims_files = list(base_dir.glob("**/*_transformed_claims.csv"))
+        logger.info(f"  Found {len(transformed_claims_files)} files")
+
+    result_summary_df, decline_reason_counts, submission_result_counts = build_reports(refill_report, transformed_claims_files)
     agent_report = build_agent_report(refill_report)
 
     today = now.strftime("%Y-%m-%d")
@@ -35,7 +50,7 @@ def main(config: HumanaRefillConfig):
     save_df_to_csv(decline_reason_counts, reports_dir / f"ytd_decline_reason_counts_{today}.csv")
     save_df_to_csv(submission_result_counts, reports_dir / f"ytd_refill_submission_result_counts_{today}.csv")
     save_df_to_csv(agent_report, reports_dir / f"ytd_agent_refill_submission_rate_{today}.csv")
-
+    breakpoint()
     send_metric_alerts(submission_result_counts, result_summary_df, decline_reason_counts, config.config)
 
 
@@ -46,6 +61,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("config_path", help="Path to config file")
+    parser.add_argument("--etl-dir", default=None, help="Base ETL dir (local or s3://) to scan for transformed_claims files")
     args = parser.parse_args()
 
-    main(HumanaRefillConfig(config_file=Path(args.config_path)))
+    main(HumanaRefillConfig(config_file=Path(args.config_path)), etl_dir=args.etl_dir)
