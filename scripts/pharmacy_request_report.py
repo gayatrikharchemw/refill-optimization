@@ -26,30 +26,50 @@ def build_pharmacy_request_report(df: pd.DataFrame) -> pd.DataFrame:
         df["Pharmacy Request Completion Date"], errors="coerce"
     )
 
-    march = df[df["Pharmacy Request Completion Date"] >= pd.Timestamp(2026, 3, 1)].copy()
-
-    march["Completion By"] = march["Pharmacy Request Completion By Email"].apply(
-        lambda x: "AI Calls" if str(x).strip().lower() == AI_EMAIL.lower() else "Clerks"
-    )
+    filtered = df[df["Pharmacy Request Completion Date"] >= pd.Timestamp(2026, 3, 1)].copy()
+    filtered["Is AI"] = filtered["Pharmacy Request Completion By Email"].str.strip().str.lower() == AI_EMAIL.lower()
 
     result_col = "Pharmacy Request Result"
-    march[result_col] = march[result_col].fillna("").str.strip()
+    filtered[result_col] = filtered[result_col].fillna("").str.strip()
+    result_values = sorted(filtered[result_col].unique())
 
-    result_values = sorted(march[result_col].unique())
+    ai_df = filtered[filtered["Is AI"]]
+    agent_df = filtered[~filtered["Is AI"]]
+
+    ai_total = len(ai_df)
+    agent_total = len(agent_df)
+    grand_total = len(filtered)
 
     rows = []
-    for label in ["AI Calls", "Clerks"]:
-        group = march[march["Completion By"] == label]
-        total = len(group)
-        row = {"Completion By": label, "Total Completed (Since March 1, 2026)": total}
-        for val in result_values:
-            row[val if val else "(Blank)"] = (group[result_col] == val).sum()
-        rows.append(row)
+    for val in result_values:
+        label = val if val else "(Blank)"
+        count = (filtered[result_col] == val).sum()
+        ai_count = (ai_df[result_col] == val).sum()
+        agent_count = (agent_df[result_col] == val).sum()
+        rows.append({
+            "Row Labels": label,
+            "Count of dispo": count,
+            "Total percentage": f"{round(count / grand_total * 100, 1)}%" if grand_total > 0 else "0%",
+            "AI": ai_count,
+            "AI %": f"{round(ai_count / ai_total * 100, 1)}%" if ai_total > 0 else "0%",
+            "Agent": agent_count,
+            "Agent %": f"{round(agent_count / agent_total * 100, 1)}%" if agent_total > 0 else "0%",
+        })
+
+    rows.append({
+        "Row Labels": "Grand Total",
+        "Count of dispo": grand_total,
+        "Total percentage": "",
+        "AI": ai_total,
+        "AI %": "",
+        "Agent": agent_total,
+        "Agent %": "",
+    })
 
     return pd.DataFrame(rows)
 
 
-def build_clerk_weekly_report(df: pd.DataFrame) -> pd.DataFrame:
+def build_clerk_ytd_report(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
 
     df["Pharmacy Request Completion Date"] = pd.to_datetime(
@@ -61,28 +81,25 @@ def build_clerk_weekly_report(df: pd.DataFrame) -> pd.DataFrame:
         (df["Pharmacy Request Completion By Email"].str.strip().str.lower() != AI_EMAIL.lower())
     ].copy()
 
-    clerks["Week"] = clerks["Pharmacy Request Completion Date"].dt.to_period("W").dt.start_time.dt.date
-    clerks["Date Range"] = clerks["Week"].apply(
-        lambda w: f"{w.strftime('%m/%d/%Y')} - {(w + pd.Timedelta(days=6)).strftime('%m/%d/%Y')}"
-    )
-
     result_col = "Pharmacy Request Result"
     clerks[result_col] = clerks[result_col].fillna("").str.strip()
     result_values = sorted(clerks[result_col].unique())
 
     rows = []
-    for (email, week), group in clerks.groupby(["Pharmacy Request Completion By Email", "Week"]):
-        date_range = group["Date Range"].iloc[0]
+    for email, group in clerks.groupby("Pharmacy Request Completion By Email"):
+        total = len(group)
         row = {
             "Clerk Email": email,
-            "Date Range": date_range,
-            "Total Completed": len(group),
+            "Total Completed": total,
         }
         for val in result_values:
-            row[val if val else "(Blank)"] = (group[result_col] == val).sum()
+            count = (group[result_col] == val).sum()
+            label = val if val else "(Blank)"
+            row[label] = count
+            row[f"% {label}"] = round(count / total * 100, 1) if total > 0 else 0
         rows.append(row)
 
-    return pd.DataFrame(rows).sort_values(["Clerk Email", "Date Range"]).reset_index(drop=True)
+    return pd.DataFrame(rows).sort_values("Clerk Email").reset_index(drop=True)
 
 
 def main(config: HumanaRefillConfig):
@@ -100,12 +117,12 @@ def main(config: HumanaRefillConfig):
     logger.info(f"  Downloaded {len(pharmacy_report):,} rows")
 
     report = build_pharmacy_request_report(pharmacy_report)
-    clerk_weekly_report = build_clerk_weekly_report(pharmacy_report)
+    clerk_ytd_report = build_clerk_ytd_report(pharmacy_report)
 
     today = now.strftime("%Y-%m-%d")
     reports_dir = config["paths"]["reports"] / today
     save_df_to_csv(report, reports_dir / f"pharmacy_request_march_summary_{today}.csv")
-    save_df_to_csv(clerk_weekly_report, reports_dir / f"pharmacy_request_clerk_weekly_{today}.csv")
+    save_df_to_csv(clerk_ytd_report, reports_dir / f"pharmacy_request_clerk_ytd_{today}.csv")
     logger.info(f"Saved reports to {reports_dir}")
 
 
