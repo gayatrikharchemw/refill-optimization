@@ -118,6 +118,7 @@ def send_metric_alerts(submission_result_counts: pd.DataFrame, result_summary_df
         )
 
     decline_col = "% Member Does Not Want Refill"
+
     if len(decline_reason_counts) > 0 and decline_col in decline_reason_counts.columns:
         curr_decline = decline_reason_counts.iloc[-1]
         decline_val = float(curr_decline[decline_col])
@@ -134,3 +135,81 @@ def send_metric_alerts(submission_result_counts: pd.DataFrame, result_summary_df
                 subject=f"Refill Alert: Member Does Not Want Refill above 25% ({curr_decline['Date Range']})",
                 html=decline_alert_html,
             )
+
+
+FLAG_DESCRIPTIONS = {
+    "a": (
+        "High Accepted Rate + Low Refill Submissions",
+        "Acceptance is good but refill conversion during calls is low. "
+        "Inform agent to improve refill submission rate during calls.",
+    ),
+    "b": (
+        "Low Accepted Rate + Low Refill Submissions",
+        "Low acceptance and conversion effectiveness. "
+        "Highlight for performance improvement / training.",
+    ),
+    "c": (
+        "Low Accepted Rate + High 'Member Does Not Want Refill'",
+        "Higher declines observed during calls. "
+        "Inform agent to improve objection handling & member communication.",
+    ),
+}
+
+
+def send_agent_performance_alert(agent_report: pd.DataFrame, config: dict) -> None:
+    email_config = config["email"]
+    flagged = agent_report.loc[agent_report["Performance Flag"] != ""].copy()
+
+    if flagged.empty:
+        return
+
+    flag_sections = ""
+    for flag, (title, recommendation) in FLAG_DESCRIPTIONS.items():
+        agents = flagged.loc[flagged["Performance Flag"].str.contains(flag)]
+        if agents.empty:
+            continue
+
+        rows = ""
+        for _, row in agents.iterrows():
+            rows += f"""
+            <tr>
+                <td>{row['Completion By Email']}</td>
+                <td>{int(row['Total Completed Calls'])}</td>
+                <td>{row['% Refill Accepted']:.1f}%</td>
+                <td>{row['% Refill Submitted (of Accepted)']:.1f}%</td>
+                <td>{row['% Reminded - Refilled on Own (of Accepted)']:.1f}%</td>
+                <td>{row['% Member Does Not Want Refill']:.1f}%</td>
+            </tr>"""
+
+        flag_sections += f"""
+        <h3>Category {flag.upper()}: {title}</h3>
+        <p><em>{recommendation}</em></p>
+        <table border="1" cellpadding="6">
+            <tr>
+                <th>Agent</th>
+                <th>Total Calls</th>
+                <th>% Accepted</th>
+                <th>% Refill Submitted</th>
+                <th>% Reminded on Own</th>
+                <th>% Does Not Want Refill</th>
+            </tr>
+            {rows}
+        </table>"""
+
+    if not flag_sections:
+        return
+
+    html = f"""
+    <p>Hi,</p>
+    <p>The following agents have been flagged for performance review based on YTD data
+    (minimum {agent_report['Total Completed Calls'].min():.0f}+ completed cases, accepted rate threshold: 84%).</p>
+    {flag_sections}
+    <p>Thanks,<br>{email_config['sender_name']}</p>
+    """
+
+    emailer = get_email_client(config)
+    emailer.send_email(
+        to_addresses=email_config["agent_performance_to"],
+        subject="Refill Agent Performance Review — Flagged Agents",
+        html=html,
+    )

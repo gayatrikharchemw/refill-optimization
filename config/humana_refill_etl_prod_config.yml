@@ -1,6 +1,7 @@
 fs: s3
 paths:
   reports: /humana-prod-data/2026/Refill/internal_reports/
+  etl_dir: /humana-prod-data/2026/Refill/daily_refill_etl/
 cmapp:
   host: https://v7.cmapp.medwatchers.com
   client: Humana NonCMR
@@ -38,6 +39,9 @@ email:
     - "narega.nazarian@medwatchers.com"
     - "gayatrishriram.kharche@medwatchers.com"
   subject: "Refill Internal Report Stats"
+  agent_performance_to:
+    - "narega.nazarian@medwatchers.com"
+    - "gayatrishriram.kharche@medwatchers.com"
   no_post_completion_to:
     - "narega.nazarian@medwatchers.com"
     - "gayatrishriram.kharche@medwatchers.com"

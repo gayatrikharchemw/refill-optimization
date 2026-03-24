@@ -13,8 +13,8 @@ from utils.config_utils import HumanaRefillConfig
 from utils.date_util import get_current_pst_time
 from utils.file_utils import save_df_to_csv
 from utils.reporting import daily
-from utils.email_utils import send_metric_alerts
-from utils.reporting.refill_summary import build_agent_report, build_reports, get_week_totals_from_transformed_claims
+from utils.email_utils import send_agent_performance_alert, send_metric_alerts
+from utils.reporting.refill_summary import build_agent_report, build_reports
 
 
 logger = logging.getLogger(__name__)
@@ -39,8 +39,8 @@ def main(config: HumanaRefillConfig, etl_dir: str = None):
     )
 
     transformed_claims_files = []
-    if etl_dir:
-        base_dir = _resolve_path(etl_dir)
+    base_dir = _resolve_path(etl_dir) if etl_dir else config["paths"].get("etl_dir")
+    if base_dir:
         logger.info(f"Scanning {base_dir} for transformed_claims files...")
         transformed_claims_files = list(base_dir.glob("**/*_transformed_claims.csv"))
         logger.info(f"  Found {len(transformed_claims_files)} files")
@@ -57,6 +57,7 @@ def main(config: HumanaRefillConfig, etl_dir: str = None):
     save_df_to_csv(agent_report, reports_dir / f"ytd_agent_refill_submission_rate_{today}.csv")
     breakpoint()
     send_metric_alerts(submission_result_counts, result_summary_df, decline_reason_counts, config.config)
+    send_agent_performance_alert(agent_report, config.config)
 
 
 if __name__ == "__main__":

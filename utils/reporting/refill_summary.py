@@ -170,6 +170,10 @@ def agent_summary(df):
             "% Refill Submitted (of Accepted)": round(refill_submitted / accepted * 100, 1) if accepted > 0 else None,
         })
 
+MIN_COMPLETED_CASES = 100
+ACCEPTED_RATE_THRESHOLD = 84.0
+
+
 def build_agent_report(refill_report: pd.DataFrame) -> pd.DataFrame:
     completed = refill_report.loc[refill_report["Disposition"] == "Completed"].copy()
 
@@ -178,12 +182,34 @@ def build_agent_report(refill_report: pd.DataFrame) -> pd.DataFrame:
         .groupby("Completion By Email")
         .apply(agent_summary)
         .reset_index()
-        .sort_values("% Reminded - Refilled on Own (of Accepted)", ascending=False)
-        .reset_index(drop=True)
     )
+
+    df = df.loc[df["Total Completed Calls"] >= MIN_COMPLETED_CASES].reset_index(drop=True)
 
     pct_col = "% Reminded - Refilled on Own (of Accepted)"
     threshold = df[pct_col].quantile(0.75)
     df["Above 75th Percentile"] = df[pct_col] > threshold
+
+    avg_submitted = df["% Refill Submitted (of Accepted)"].mean()
+    avg_does_not_want = df["% Member Does Not Want Refill"].mean()
+
+    low_accepted = df["% Refill Accepted"] < ACCEPTED_RATE_THRESHOLD
+    low_submitted = df["% Refill Submitted (of Accepted)"] < avg_submitted
+    high_does_not_want = df["% Member Does Not Want Refill"] > avg_does_not_want
+
+    flags = []
+    for idx in df.index:
+        agent_flags = []
+        if not low_accepted[idx] and low_submitted[idx]:
+            agent_flags.append("a")
+        if low_accepted[idx] and low_submitted[idx]:
+            agent_flags.append("b")
+        if low_accepted[idx] and high_does_not_want[idx]:
+            agent_flags.append("c")
+        flags.append(", ".join(agent_flags))
+
+    df["Performance Flag"] = flags
+
+    df = df.sort_values("% Refill Submitted (of Accepted)", ascending=True).reset_index(drop=True)
 
     return df
