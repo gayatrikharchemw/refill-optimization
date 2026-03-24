@@ -1,6 +1,7 @@
 """
 Usage:
     uv run scripts/pharmacy_request_report.py config/humana_refill_etl_prod_config.yml
+    uv run scripts/pharmacy_request_report.py config/humana_refill_etl_prod_config.yml --date 2026-03-20
 """
 import argparse
 import logging
@@ -69,7 +70,7 @@ def build_pharmacy_request_report(df: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def build_clerk_ytd_report(df: pd.DataFrame) -> pd.DataFrame:
+def build_clerk_ytd_report(df: pd.DataFrame, start_date: pd.Timestamp, end_date: pd.Timestamp) -> pd.DataFrame:
     df = df.copy()
 
     df["Pharmacy Request Completion Date"] = pd.to_datetime(
@@ -77,7 +78,8 @@ def build_clerk_ytd_report(df: pd.DataFrame) -> pd.DataFrame:
     )
 
     clerks = df[
-        (df["Pharmacy Request Completion Date"] >= pd.Timestamp(2026, 3, 1)) &
+        (df["Pharmacy Request Completion Date"] >= start_date) &
+        (df["Pharmacy Request Completion Date"] <= end_date) &
         (df["Pharmacy Request Completion By Email"].str.strip().str.lower() != AI_EMAIL.lower())
     ].copy()
 
@@ -99,14 +101,23 @@ def build_clerk_ytd_report(df: pd.DataFrame) -> pd.DataFrame:
             row[f"% {label}"] = round(count / total * 100, 1) if total > 0 else 0
         rows.append(row)
 
-    return pd.DataFrame(rows).sort_values("Clerk Email").reset_index(drop=True)
+    return pd.DataFrame(rows).sort_values("Total Completed", ascending=False).reset_index(drop=True)
 
 
-def main(config: HumanaRefillConfig):
+def main(config: HumanaRefillConfig, date: str = None):
     now = get_current_pst_time()
+
+    if date:
+        target = pd.Timestamp(date)
+    else:
+        target = (now - pd.Timedelta(days=1)).normalize()
+
+    clerk_start = target.replace(hour=0, minute=0, second=0, microsecond=0)
+    clerk_end = target.replace(hour=23, minute=59, second=59, microsecond=999999)
+
     ytd_start = now.replace(month=1, day=1, hour=0, minute=0, second=0, microsecond=0)
 
-    logger.info("Downloading Refill Pharmacy Request Report YTD...")
+    logger.info(f"Downloading Refill Pharmacy Request Report YTD...")
     pharmacy_report = daily.download_cmapp_report(
         cmapp_client=config.get_cmapp_client(),
         report_category="Refill Pharmacy Request Report",
@@ -117,12 +128,13 @@ def main(config: HumanaRefillConfig):
     logger.info(f"  Downloaded {len(pharmacy_report):,} rows")
 
     report = build_pharmacy_request_report(pharmacy_report)
-    clerk_ytd_report = build_clerk_ytd_report(pharmacy_report)
+    clerk_report = build_clerk_ytd_report(pharmacy_report, clerk_start, clerk_end)
 
     today = now.strftime("%Y-%m-%d")
+    clerk_date_label = target.strftime("%Y-%m-%d")
     reports_dir = config["paths"]["reports"] / today
     save_df_to_csv(report, reports_dir / f"pharmacy_request_march_summary_{today}.csv")
-    save_df_to_csv(clerk_ytd_report, reports_dir / f"pharmacy_request_clerk_ytd_{today}.csv")
+    save_df_to_csv(clerk_report, reports_dir / f"pharmacy_request_clerk_{clerk_date_label}.csv")
     logger.info(f"Saved reports to {reports_dir}")
 
 
@@ -133,6 +145,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("config_path", help="Path to config file")
+    parser.add_argument("--date", default=None, help="Date for clerk report (YYYY-MM-DD). Defaults to yesterday.")
     args = parser.parse_args()
 
-    main(HumanaRefillConfig(config_file=Path(args.config_path)))
+    main(HumanaRefillConfig(config_file=Path(args.config_path)), date=args.date)
