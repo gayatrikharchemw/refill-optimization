@@ -36,16 +36,16 @@ email:
   sender_name: "Gayatri"
   from_address: etl-alerts@medwatchers.com
   to:
-    - "narega.nazarian@medwatchers.com"
+    # - "narega.nazarian@medwatchers.com"
     - "gayatrishriram.kharche@medwatchers.com"
   subject: "Refill Internal Report Stats"
   agent_performance_to:
-    - "narega.nazarian@medwatchers.com"
+    # - "narega.nazarian@medwatchers.com"
     - "gayatrishriram.kharche@medwatchers.com"
   no_post_completion_to:
-    - "narega.nazarian@medwatchers.com"
+    # - "narega.nazarian@medwatchers.com"
     - "gayatrishriram.kharche@medwatchers.com"
-    - "Rohan.Shingre@medwatchers.com"
-    - "chris.francis@medwatchers.com"
+    # - "Rohan.Shingre@medwatchers.com"
+    # - "chris.francis@medwatchers.com"
 
 

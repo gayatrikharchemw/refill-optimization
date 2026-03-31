@@ -174,8 +174,42 @@ MIN_COMPLETED_CASES = 100
 ACCEPTED_RATE_THRESHOLD = 84.0
 
 
-def build_agent_report(refill_report: pd.DataFrame) -> pd.DataFrame:
+def build_agent_report(
+    refill_report: pd.DataFrame,
+    as_of_date=None,
+    period: str = "weekly",
+) -> pd.DataFrame:
+    """Build agent performance report for the given period.
+
+    Args:
+        refill_report: Full YTD refill report DataFrame.
+        as_of_date: datetime.date (or None for today). The report covers the
+                    day / week / month that contains this date.
+        period: One of "daily", "weekly", or "monthly".
+    """
+    import datetime
+
     completed = refill_report.loc[refill_report["Disposition"] == "Completed"].copy()
+    completed["Interaction Date"] = pd.to_datetime(completed["Interaction Date"]).dt.date
+
+    if as_of_date is None:
+        as_of_date = datetime.date.today()
+
+    if period == "daily":
+        mask = completed["Interaction Date"] == as_of_date
+    elif period == "weekly":
+        # ISO week: Monday to Sunday containing as_of_date
+        week_start = as_of_date - datetime.timedelta(days=as_of_date.weekday())
+        week_end = week_start + datetime.timedelta(days=6)
+        mask = (completed["Interaction Date"] >= week_start) & (completed["Interaction Date"] <= week_end)
+    elif period == "monthly":
+        mask = completed["Interaction Date"].apply(
+            lambda d: d.year == as_of_date.year and d.month == as_of_date.month
+        )
+    else:
+        raise ValueError(f"period must be 'daily', 'weekly', or 'monthly', got {period!r}")
+
+    completed = completed.loc[mask]
 
     df = (
         completed
