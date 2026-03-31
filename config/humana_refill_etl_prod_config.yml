@@ -2,6 +2,7 @@ fs: s3
 paths:
   reports: /humana-prod-data/2026/Refill/internal_reports/
   etl_dir: /humana-prod-data/2026/Refill/daily_refill_etl/
+  optimization: /humana-prod-data/2026/Refill/optimization/
 cmapp:
   host: https://v7.cmapp.medwatchers.com
   client: Humana NonCMR

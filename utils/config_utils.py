@@ -4,6 +4,9 @@ from pathlib import Path
 from typing import Dict
 import os
 
+from sqlalchemy import create_engine
+from sqlalchemy.engine import Engine
+
 
 import yaml
 from cmappclient import CMAPPClient
@@ -66,6 +69,14 @@ class HumanaRefillConfig:
         )
 
         return client
+
+    def get_outreach_db_engine(self) -> Engine:
+        pg = self.config["outreach"]["postgres"]
+        creds = self.vault.get_database_credentials(pg["vault_path"])
+        return create_engine(
+            f"postgresql+psycopg2://{creds['username']}:{creds['password']}"
+            f"@{pg['db_server']}:{pg['db_port']}/{pg['db_name']}"
+        )
 
 class Config:
     """

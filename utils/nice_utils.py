@@ -244,6 +244,123 @@ def get_pickup_rate_by_destination(
     return df.sort_values("pickup_rate", ascending=False).reset_index(drop=True)
 
 
+def get_outbound_stats_by_number(
+    engine: Engine,
+    start_datetime: datetime,
+    end_datetime: datetime,
+    skills: list[str],
+    year: int = 2026,
+) -> pd.DataFrame:
+    """
+    Get outbound call attempts and pickups grouped by member phone number.
+
+    Member phone column differs by year and direction:
+      - 2025 outbound: dnis
+      - 2026 outbound: destination
+    """
+    if start_datetime.tzinfo is None or end_datetime.tzinfo is None:
+        raise ValueError("start_datetime and end_datetime must be timezone-aware")
+
+    start_datetime = start_datetime.astimezone(ZoneInfo("UTC"))
+    end_datetime = end_datetime.astimezone(ZoneInfo("UTC"))
+
+    not_dialed_dispos = [
+        dispo
+        for dispo in fields.SYSTEM_DISPOSITION_MAPPING.values()
+        if fields.SYSTEM_DISPOSITION_CATEGORY_MAPPING.get(dispo, "") in ["Error / Failure", "Suppressed"]
+    ]
+    answered_dispos = fields.ANSWERED_DISPOSITIONS
+
+    if year == 2025:
+        query = text("""
+            SELECT
+                dnis AS member_phone,
+                COUNT(*) FILTER (WHERE disposition != ALL(:not_dialed_dispos)) AS total_calls,
+                COUNT(*) FILTER (WHERE disposition = ANY(:answered_dispos)) AS answered_calls
+            FROM crm_2025.call_logs
+            WHERE timestamp BETWEEN :start AND :end
+                AND NOT (disposition = 'UNKNOWN' AND abandoned = false)
+                AND skill = ANY(:skills)
+            GROUP BY dnis
+        """)
+    else:
+        query = text("""
+            SELECT
+                destination AS member_phone,
+                COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) AS total_calls,
+                COUNT(*) FILTER (WHERE dialer_disposition = ANY(:answered_dispos)) AS answered_calls
+            FROM call_logs
+            WHERE timestamp BETWEEN :start AND :end
+                AND NOT (dialer_disposition = 'UNKNOWN' AND abandoned = false)
+                AND skill_name = ANY(:skills)
+            GROUP BY destination
+        """)
+
+    with Session(engine) as session:
+        rows = session.execute(query, {
+            "start": start_datetime,
+            "end": end_datetime,
+            "skills": skills,
+            "not_dialed_dispos": list(not_dialed_dispos),
+            "answered_dispos": list(answered_dispos),
+        }).fetchall()
+
+    df = pd.DataFrame(rows, columns=["member_phone", "total_calls", "answered_calls"])
+    df["pickup_rate"] = (df["answered_calls"] / df["total_calls"] * 100).where(df["total_calls"] > 0, 0).round(2)
+    return df
+
+
+def get_inbound_callbacks_by_number(
+    engine: Engine,
+    start_datetime: datetime,
+    end_datetime: datetime,
+    skills: list[str],
+    year: int = 2026,
+) -> pd.DataFrame:
+    """
+    Get inbound callback counts grouped by member phone number.
+
+    Member phone column differs by year and direction:
+      - 2025 inbound: ani
+      - 2026 inbound: source
+    """
+    if start_datetime.tzinfo is None or end_datetime.tzinfo is None:
+        raise ValueError("start_datetime and end_datetime must be timezone-aware")
+
+    start_datetime = start_datetime.astimezone(ZoneInfo("UTC"))
+    end_datetime = end_datetime.astimezone(ZoneInfo("UTC"))
+
+    if year == 2025:
+        query = text("""
+            SELECT
+                ani AS member_phone,
+                COUNT(*) AS inbound_calls
+            FROM crm_2025.call_logs
+            WHERE timestamp BETWEEN :start AND :end
+                AND skill = ANY(:skills)
+            GROUP BY ani
+        """)
+    else:
+        query = text("""
+            SELECT
+                source AS member_phone,
+                COUNT(*) AS inbound_calls
+            FROM call_logs
+            WHERE timestamp BETWEEN :start AND :end
+                AND skill_name = ANY(:skills)
+            GROUP BY source
+        """)
+
+    with Session(engine) as session:
+        rows = session.execute(query, {
+            "start": start_datetime,
+            "end": end_datetime,
+            "skills": skills,
+        }).fetchall()
+
+    return pd.DataFrame(rows, columns=["member_phone", "inbound_calls"])
+
+
 def get_never_answered_destinations(
     engine: Engine,
     destinations: list[str],
