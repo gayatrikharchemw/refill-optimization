@@ -244,12 +244,137 @@ def get_pickup_rate_by_destination(
     return df.sort_values("pickup_rate", ascending=False).reset_index(drop=True)
 
 
+def get_outbound_stats_both_years(
+    engine: Engine,
+    start_2026: datetime,
+    end_2026: datetime,
+    start_2025: datetime,
+    end_2025: datetime,
+    skills_2026: list[str],
+    skills_2025: list[str],
+    min_attempts: int = 3,
+    never_answered_only: bool = False,
+) -> pd.DataFrame:
+    """
+    Single cross-year query: inner joins 2026 and 2025 outbound call_logs so only
+    phone numbers present in both years are returned. min_attempts is applied as a
+    HAVING clause on 2026 attempts before the join, keeping the result set small.
+
+    Args:
+        never_answered_only: If True, only return numbers with 0 pickups in 2026.
+
+    Returns DataFrame with columns:
+        member_phone, attempts_2026, pickups_2026, pickup_rate_2026,
+        attempts_2025, pickups_2025, pickup_rate_2025
+    """
+    for dt in (start_2026, end_2026, start_2025, end_2025):
+        if dt.tzinfo is None:
+            raise ValueError("All datetimes must be timezone-aware")
+
+    not_dialed_dispos = [
+        dispo
+        for dispo in fields.SYSTEM_DISPOSITION_MAPPING.values()
+        if fields.SYSTEM_DISPOSITION_CATEGORY_MAPPING.get(dispo, "") in ["Error / Failure", "Suppressed"]
+    ]
+    answered_dispos = fields.ANSWERED_DISPOSITIONS
+
+    if never_answered_only:
+        query = text("""
+            WITH ob_2026 AS (
+                SELECT
+                    destination AS member_phone,
+                    COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) AS attempts_2026,
+                    COUNT(*) FILTER (WHERE dialer_disposition = ANY(:answered_dispos))    AS pickups_2026
+                FROM call_logs
+                WHERE timestamp BETWEEN :start_2026 AND :end_2026
+                    AND skill_name = ANY(:skills_2026)
+                GROUP BY destination
+                HAVING COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) >= :min_attempts
+                    AND COUNT(*) FILTER (WHERE dialer_disposition = ANY(:answered_dispos)) = 0
+            ),
+            ob_2025 AS (
+                SELECT
+                    dnis AS member_phone,
+                    COUNT(*) FILTER (WHERE disposition != ALL(:not_dialed_dispos)) AS attempts_2025,
+                    COUNT(*) FILTER (WHERE disposition = ANY(:answered_dispos))    AS pickups_2025
+                FROM crm_2025.call_logs
+                WHERE timestamp BETWEEN :start_2025 AND :end_2025
+                    AND NOT (disposition = 'UNKNOWN' AND abandoned = false)
+                    AND skill = ANY(:skills_2025)
+                GROUP BY dnis
+            )
+            SELECT
+                ob_2026.member_phone,
+                ob_2026.attempts_2026,
+                ob_2026.pickups_2026,
+                ob_2025.attempts_2025,
+                ob_2025.pickups_2025
+            FROM ob_2026
+            INNER JOIN ob_2025 ON ob_2026.member_phone = ob_2025.member_phone
+        """)
+    else:
+        query = text("""
+            WITH ob_2026 AS (
+                SELECT
+                    destination AS member_phone,
+                    COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) AS attempts_2026,
+                    COUNT(*) FILTER (WHERE dialer_disposition = ANY(:answered_dispos))    AS pickups_2026
+                FROM call_logs
+                WHERE timestamp BETWEEN :start_2026 AND :end_2026
+                    AND skill_name = ANY(:skills_2026)
+                GROUP BY destination
+                HAVING COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) >= :min_attempts
+            ),
+            ob_2025 AS (
+                SELECT
+                    dnis AS member_phone,
+                    COUNT(*) FILTER (WHERE disposition != ALL(:not_dialed_dispos)) AS attempts_2025,
+                    COUNT(*) FILTER (WHERE disposition = ANY(:answered_dispos))    AS pickups_2025
+                FROM crm_2025.call_logs
+                WHERE timestamp BETWEEN :start_2025 AND :end_2025
+                    AND NOT (disposition = 'UNKNOWN' AND abandoned = false)
+                    AND skill = ANY(:skills_2025)
+                GROUP BY dnis
+            )
+            SELECT
+                ob_2026.member_phone,
+                ob_2026.attempts_2026,
+                ob_2026.pickups_2026,
+                ob_2025.attempts_2025,
+                ob_2025.pickups_2025
+            FROM ob_2026
+            INNER JOIN ob_2025 ON ob_2026.member_phone = ob_2025.member_phone
+        """)
+
+    with Session(engine) as session:
+        rows = session.execute(query, {
+            "start_2026": start_2026.astimezone(ZoneInfo("UTC")),
+            "end_2026":   end_2026.astimezone(ZoneInfo("UTC")),
+            "start_2025": start_2025.astimezone(ZoneInfo("UTC")),
+            "end_2025":   end_2025.astimezone(ZoneInfo("UTC")),
+            "skills_2026": skills_2026,
+            "skills_2025": skills_2025,
+            "not_dialed_dispos": list(not_dialed_dispos),
+            "answered_dispos":   list(answered_dispos),
+            "min_attempts": min_attempts,
+        }).fetchall()
+
+    df = pd.DataFrame(rows, columns=[
+        "member_phone", "attempts_2026", "pickups_2026", "attempts_2025", "pickups_2025"
+    ])
+    df["pickup_rate_2026"] = (df["pickups_2026"] / df["attempts_2026"] * 100).where(df["attempts_2026"] > 0, 0).round(2)
+    df["pickup_rate_2025"] = (df["pickups_2025"] / df["attempts_2025"] * 100).where(df["attempts_2025"] > 0, 0).round(2)
+    return df
+
+
 def get_outbound_stats_by_number(
     engine: Engine,
     start_datetime: datetime,
     end_datetime: datetime,
     skills: list[str],
     year: int = 2026,
+    min_attempts: int = 1,
+    never_answered_only: bool = False,
 ) -> pd.DataFrame:
     """
     Get outbound call attempts and pickups grouped by member phone number.
@@ -257,6 +382,10 @@ def get_outbound_stats_by_number(
     Member phone column differs by year and direction:
       - 2025 outbound: dnis
       - 2026 outbound: destination
+
+    Args:
+        min_attempts: Minimum number of attempts to include (applied as HAVING clause).
+        never_answered_only: If True, only return numbers with 0 pickups.
     """
     if start_datetime.tzinfo is None or end_datetime.tzinfo is None:
         raise ValueError("start_datetime and end_datetime must be timezone-aware")
@@ -271,7 +400,16 @@ def get_outbound_stats_by_number(
     ]
     answered_dispos = fields.ANSWERED_DISPOSITIONS
 
-    if year == 2025:
+    params = {
+        "start": start_datetime,
+        "end": end_datetime,
+        "skills": skills,
+        "not_dialed_dispos": list(not_dialed_dispos),
+        "answered_dispos": list(answered_dispos),
+        "min_attempts": min_attempts,
+    }
+
+    if year == 2025 and never_answered_only:
         query = text("""
             SELECT
                 dnis AS member_phone,
@@ -282,6 +420,35 @@ def get_outbound_stats_by_number(
                 AND NOT (disposition = 'UNKNOWN' AND abandoned = false)
                 AND skill = ANY(:skills)
             GROUP BY dnis
+            HAVING COUNT(*) FILTER (WHERE disposition != ALL(:not_dialed_dispos)) >= :min_attempts
+                AND COUNT(*) FILTER (WHERE disposition = ANY(:answered_dispos)) = 0
+        """)
+    elif year == 2025:
+        query = text("""
+            SELECT
+                dnis AS member_phone,
+                COUNT(*) FILTER (WHERE disposition != ALL(:not_dialed_dispos)) AS total_calls,
+                COUNT(*) FILTER (WHERE disposition = ANY(:answered_dispos)) AS answered_calls
+            FROM crm_2025.call_logs
+            WHERE timestamp BETWEEN :start AND :end
+                AND NOT (disposition = 'UNKNOWN' AND abandoned = false)
+                AND skill = ANY(:skills)
+            GROUP BY dnis
+            HAVING COUNT(*) FILTER (WHERE disposition != ALL(:not_dialed_dispos)) >= :min_attempts
+        """)
+    elif never_answered_only:
+        query = text("""
+            SELECT
+                destination AS member_phone,
+                COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) AS total_calls,
+                COUNT(*) FILTER (WHERE dialer_disposition = ANY(:answered_dispos)) AS answered_calls
+            FROM call_logs
+            WHERE timestamp BETWEEN :start AND :end
+                AND NOT (dialer_disposition = 'UNKNOWN' AND abandoned = false)
+                AND skill_name = ANY(:skills)
+            GROUP BY destination
+            HAVING COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) >= :min_attempts
+                AND COUNT(*) FILTER (WHERE dialer_disposition = ANY(:answered_dispos)) = 0
         """)
     else:
         query = text("""
@@ -294,16 +461,11 @@ def get_outbound_stats_by_number(
                 AND NOT (dialer_disposition = 'UNKNOWN' AND abandoned = false)
                 AND skill_name = ANY(:skills)
             GROUP BY destination
+            HAVING COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) >= :min_attempts
         """)
 
     with Session(engine) as session:
-        rows = session.execute(query, {
-            "start": start_datetime,
-            "end": end_datetime,
-            "skills": skills,
-            "not_dialed_dispos": list(not_dialed_dispos),
-            "answered_dispos": list(answered_dispos),
-        }).fetchall()
+        rows = session.execute(query, params).fetchall()
 
     df = pd.DataFrame(rows, columns=["member_phone", "total_calls", "answered_calls"])
     df["pickup_rate"] = (df["answered_calls"] / df["total_calls"] * 100).where(df["total_calls"] > 0, 0).round(2)
@@ -316,6 +478,7 @@ def get_inbound_callbacks_by_number(
     end_datetime: datetime,
     skills: list[str],
     year: int = 2026,
+    numbers: list[str] | None = None,
 ) -> pd.DataFrame:
     """
     Get inbound callback counts grouped by member phone number.
@@ -323,6 +486,10 @@ def get_inbound_callbacks_by_number(
     Member phone column differs by year and direction:
       - 2025 inbound: ani
       - 2026 inbound: source
+
+    Args:
+        numbers: Optional list of phone numbers to filter to. Pass the outbound
+                 result set to avoid fetching the entire inbound table.
     """
     if start_datetime.tzinfo is None or end_datetime.tzinfo is None:
         raise ValueError("start_datetime and end_datetime must be timezone-aware")
@@ -330,33 +497,57 @@ def get_inbound_callbacks_by_number(
     start_datetime = start_datetime.astimezone(ZoneInfo("UTC"))
     end_datetime = end_datetime.astimezone(ZoneInfo("UTC"))
 
+    params = {"start": start_datetime, "end": end_datetime, "skills": skills}
+
     if year == 2025:
-        query = text("""
-            SELECT
-                ani AS member_phone,
-                COUNT(*) AS inbound_calls
-            FROM crm_2025.call_logs
-            WHERE timestamp BETWEEN :start AND :end
-                AND skill = ANY(:skills)
-            GROUP BY ani
-        """)
+        if numbers:
+            params["numbers"] = numbers
+            query = text("""
+                SELECT
+                    ani AS member_phone,
+                    COUNT(*) AS inbound_calls
+                FROM crm_2025.call_logs
+                WHERE timestamp BETWEEN :start AND :end
+                    AND skill = ANY(:skills)
+                    AND ani = ANY(:numbers)
+                GROUP BY ani
+            """)
+        else:
+            query = text("""
+                SELECT
+                    ani AS member_phone,
+                    COUNT(*) AS inbound_calls
+                FROM crm_2025.call_logs
+                WHERE timestamp BETWEEN :start AND :end
+                    AND skill = ANY(:skills)
+                GROUP BY ani
+            """)
     else:
-        query = text("""
-            SELECT
-                source AS member_phone,
-                COUNT(*) AS inbound_calls
-            FROM call_logs
-            WHERE timestamp BETWEEN :start AND :end
-                AND skill_name = ANY(:skills)
-            GROUP BY source
-        """)
+        if numbers:
+            params["numbers"] = numbers
+            query = text("""
+                SELECT
+                    source AS member_phone,
+                    COUNT(*) AS inbound_calls
+                FROM call_logs
+                WHERE timestamp BETWEEN :start AND :end
+                    AND skill_name = ANY(:skills)
+                    AND source = ANY(:numbers)
+                GROUP BY source
+            """)
+        else:
+            query = text("""
+                SELECT
+                    source AS member_phone,
+                    COUNT(*) AS inbound_calls
+                FROM call_logs
+                WHERE timestamp BETWEEN :start AND :end
+                    AND skill_name = ANY(:skills)
+                GROUP BY source
+            """)
 
     with Session(engine) as session:
-        rows = session.execute(query, {
-            "start": start_datetime,
-            "end": end_datetime,
-            "skills": skills,
-        }).fetchall()
+        rows = session.execute(query, params).fetchall()
 
     return pd.DataFrame(rows, columns=["member_phone", "inbound_calls"])
 
