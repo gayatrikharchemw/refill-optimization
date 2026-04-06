@@ -62,8 +62,17 @@ def main(config: HumanaRefillConfig, etl_dir: str = None, as_of_date: datetime.d
     save_df_to_csv(submission_result_counts, reports_dir / f"ytd_refill_submission_result_counts_{today}.csv")
     save_df_to_csv(agent_report, reports_dir / f"{period}_agent_refill_submission_rate_{agent_date_str}.csv")
 
-    send_metric_alerts(submission_result_counts, result_summary_df, decline_reason_counts, config.config)
-    send_agent_performance_alert(agent_report, config.config)
+    send_metric_alerts(submission_result_counts, result_summary_df, decline_reason_counts, config.config, as_of_date=as_of_date)
+    if period == "daily":
+        agent_date_range = as_of_date.strftime("%m/%d/%Y")
+    elif period == "weekly":
+        week_start = as_of_date - datetime.timedelta(days=as_of_date.weekday())
+        week_end = week_start + datetime.timedelta(days=6)
+        agent_date_range = f"{week_start.strftime('%m/%d/%Y')} - {week_end.strftime('%m/%d/%Y')}"
+    else:  # monthly
+        agent_date_range = as_of_date.strftime("%B %Y")
+
+    send_agent_performance_alert(agent_report, config.config, date_range=agent_date_range)
 
 
 if __name__ == "__main__":

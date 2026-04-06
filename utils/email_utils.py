@@ -1,3 +1,5 @@
+import datetime
+
 from mwemailer import Emailer
 from typing import Dict, List, Tuple
 
@@ -48,12 +50,24 @@ def render_metric_email(
     """
 
 
-def send_metric_alerts(submission_result_counts: pd.DataFrame, result_summary_df: pd.DataFrame, decline_reason_counts: pd.DataFrame, config: dict) -> None:
+def _find_week_row(df: pd.DataFrame, as_of_date: datetime.date):
+    """Return the row whose Date Range contains as_of_date, or the last row."""
+    week_start = as_of_date - datetime.timedelta(days=as_of_date.weekday())
+    week_end = week_start + datetime.timedelta(days=6)
+    target = f"{week_start.strftime('%m/%d/%Y')} - {week_end.strftime('%m/%d/%Y')}"
+    match = df[df["Date Range"] == target]
+    return match.iloc[-1] if not match.empty else df.iloc[-1]
+
+
+def send_metric_alerts(submission_result_counts: pd.DataFrame, result_summary_df: pd.DataFrame, decline_reason_counts: pd.DataFrame, config: dict, as_of_date: datetime.date = None) -> None:
+    if as_of_date is None:
+        as_of_date = datetime.date.today()
+
     if len(submission_result_counts) < 2:
         return
 
-    prev = submission_result_counts.iloc[-2]
-    curr = submission_result_counts.iloc[-1]
+    prev = _find_week_row(submission_result_counts, as_of_date - datetime.timedelta(weeks=1))
+    curr = _find_week_row(submission_result_counts, as_of_date)
 
     # (column, label, higher_is_better, fmt)
     ratio_col = "(Refilled on Own + No Post Completion) : (Refill Submitted + Out of Refill)"
@@ -99,7 +113,7 @@ def send_metric_alerts(submission_result_counts: pd.DataFrame, result_summary_df
             )
 
     if len(result_summary_df) > 0:
-        curr_week = result_summary_df.iloc[-1]
+        curr_week = _find_week_row(result_summary_df, as_of_date)
         completion_html = f"""
         <p>Hi {email_config['recipient_name']},</p>
         <p>Here is this week's case completion summary for <strong>{curr_week['Date Range']}</strong>:</p>
@@ -120,7 +134,7 @@ def send_metric_alerts(submission_result_counts: pd.DataFrame, result_summary_df
     decline_col = "% Member Does Not Want Refill"
 
     if len(decline_reason_counts) > 0 and decline_col in decline_reason_counts.columns:
-        curr_decline = decline_reason_counts.iloc[-1]
+        curr_decline = _find_week_row(decline_reason_counts, as_of_date)
         decline_val = float(curr_decline[decline_col])
         if decline_val > 25:
             decline_alert_html = f"""
@@ -156,7 +170,7 @@ FLAG_DESCRIPTIONS = {
 }
 
 
-def send_agent_performance_alert(agent_report: pd.DataFrame, config: dict) -> None:
+def send_agent_performance_alert(agent_report: pd.DataFrame, config: dict, date_range: str = None) -> None:
     email_config = config["email"]
     flagged = agent_report.loc[agent_report["Performance Flag"] != ""].copy()
 
@@ -199,17 +213,19 @@ def send_agent_performance_alert(agent_report: pd.DataFrame, config: dict) -> No
     if not flag_sections:
         return
 
+    date_range_str = f" ({date_range})" if date_range else ""
     html = f"""
     <p>Hi,</p>
-    <p>The following agents have been flagged for performance review based on YTD data
+    <p>The following agents have been flagged for performance review based on data for{date_range_str}
     (minimum {agent_report['Total Completed Calls'].min():.0f}+ completed cases, accepted rate threshold: 84%).</p>
     {flag_sections}
     <p>Thanks,<br>{email_config['sender_name']}</p>
     """
 
     emailer = get_email_client(config)
+    subject = f"Refill Agent Performance Review — Flagged Agents{date_range_str}"
     emailer.send_email(
         to_addresses=email_config["agent_performance_to"],
-        subject="Refill Agent Performance Review — Flagged Agents",
+        subject=subject,
         html=html,
     )

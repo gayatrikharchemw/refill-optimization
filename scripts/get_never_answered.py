@@ -61,11 +61,16 @@ if __name__ == "__main__":
     parser.add_argument("--min-attempts", type=int, default=3, help="Minimum 2026 outbound attempts to include (default: 3)")
     parser.add_argument("--2026-only", dest="only_2026", action="store_true", help="Report on 2026 numbers only, without requiring 2025 history")
     parser.add_argument("--never-answered", dest="never_answered_only", action="store_true", help="Only include numbers with 0 pickups in 2026 (answered_calls = 0)")
+    parser.add_argument("--date", type=str, default=None, help="Treat this date as 'today' (YYYY-MM-DD). Defaults to now.")
     args = parser.parse_args()
 
     config = HumanaRefillConfig(config_file=args.config_path)
     engine = config.get_outreach_db_engine()
-    now = datetime.now(tz=ZoneInfo("UTC"))
+    if args.date:
+        parsed = datetime.strptime(args.date, "%Y-%m-%d")
+        now = datetime(parsed.year, parsed.month, parsed.day, 23, 59, 59, tzinfo=ZoneInfo("UTC"))
+    else:
+        now = datetime.now(tz=ZoneInfo("UTC"))
 
     if args.only_2026:
         # --- 2026 only ---
@@ -76,6 +81,7 @@ if __name__ == "__main__":
         ))
         result = result.rename(columns={
             "total_calls": "attempts_2026",
+            "attempt_days": "attempt_days_2026",
             "answered_calls": "pickups_2026",
             "pickup_rate": "pickup_rate_2026",
         })
@@ -96,7 +102,7 @@ if __name__ == "__main__":
         result = (
             result[[
                 "member_phone",
-                "attempts_2026", "pickups_2026", "pickup_rate_2026",
+                "attempts_2026", "attempt_days_2026", "pickups_2026", "pickup_rate_2026",
                 "inbound_callbacks_2026",
                 "ever_called_back",
             ]]
@@ -146,8 +152,8 @@ if __name__ == "__main__":
         result = (
             result[[
                 "member_phone",
-                "attempts_2026", "pickups_2026", "pickup_rate_2026",
-                "attempts_2025", "pickups_2025", "pickup_rate_2025",
+                "attempts_2026", "attempt_days_2026", "pickups_2026", "pickup_rate_2026",
+                "attempts_2025", "attempt_days_2025", "pickups_2025", "pickup_rate_2025",
                 "total_attempts_combined",
                 "inbound_callbacks_2026", "inbound_callbacks_2025",
                 "ever_called_back",

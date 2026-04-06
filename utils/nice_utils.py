@@ -284,19 +284,21 @@ def get_outbound_stats_both_years(
                 SELECT
                     destination AS member_phone,
                     COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) AS attempts_2026,
-                    COUNT(*) FILTER (WHERE dialer_disposition = ANY(:answered_dispos))    AS pickups_2026
+                    COUNT(*) FILTER (WHERE dialer_disposition = ANY(:answered_dispos))    AS pickups_2026,
+                    COUNT(DISTINCT CASE WHEN dialer_disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) AS attempt_days_2026
                 FROM call_logs
                 WHERE timestamp BETWEEN :start_2026 AND :end_2026
                     AND skill_name = ANY(:skills_2026)
                 GROUP BY destination
-                HAVING COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) >= :min_attempts
+                HAVING COUNT(DISTINCT CASE WHEN dialer_disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) >= :min_attempts
                     AND COUNT(*) FILTER (WHERE dialer_disposition = ANY(:answered_dispos)) = 0
             ),
             ob_2025 AS (
                 SELECT
                     dnis AS member_phone,
                     COUNT(*) FILTER (WHERE disposition != ALL(:not_dialed_dispos)) AS attempts_2025,
-                    COUNT(*) FILTER (WHERE disposition = ANY(:answered_dispos))    AS pickups_2025
+                    COUNT(*) FILTER (WHERE disposition = ANY(:answered_dispos))    AS pickups_2025,
+                    COUNT(DISTINCT CASE WHEN disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) AS attempt_days_2025
                 FROM crm_2025.call_logs
                 WHERE timestamp BETWEEN :start_2025 AND :end_2025
                     AND NOT (disposition = 'UNKNOWN' AND abandoned = false)
@@ -306,8 +308,10 @@ def get_outbound_stats_both_years(
             SELECT
                 ob_2026.member_phone,
                 ob_2026.attempts_2026,
+                ob_2026.attempt_days_2026,
                 ob_2026.pickups_2026,
                 ob_2025.attempts_2025,
+                ob_2025.attempt_days_2025,
                 ob_2025.pickups_2025
             FROM ob_2026
             INNER JOIN ob_2025 ON ob_2026.member_phone = ob_2025.member_phone
@@ -318,18 +322,20 @@ def get_outbound_stats_both_years(
                 SELECT
                     destination AS member_phone,
                     COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) AS attempts_2026,
-                    COUNT(*) FILTER (WHERE dialer_disposition = ANY(:answered_dispos))    AS pickups_2026
+                    COUNT(*) FILTER (WHERE dialer_disposition = ANY(:answered_dispos))    AS pickups_2026,
+                    COUNT(DISTINCT CASE WHEN dialer_disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) AS attempt_days_2026
                 FROM call_logs
                 WHERE timestamp BETWEEN :start_2026 AND :end_2026
                     AND skill_name = ANY(:skills_2026)
                 GROUP BY destination
-                HAVING COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) >= :min_attempts
+                HAVING COUNT(DISTINCT CASE WHEN dialer_disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) >= :min_attempts
             ),
             ob_2025 AS (
                 SELECT
                     dnis AS member_phone,
                     COUNT(*) FILTER (WHERE disposition != ALL(:not_dialed_dispos)) AS attempts_2025,
-                    COUNT(*) FILTER (WHERE disposition = ANY(:answered_dispos))    AS pickups_2025
+                    COUNT(*) FILTER (WHERE disposition = ANY(:answered_dispos))    AS pickups_2025,
+                    COUNT(DISTINCT CASE WHEN disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) AS attempt_days_2025
                 FROM crm_2025.call_logs
                 WHERE timestamp BETWEEN :start_2025 AND :end_2025
                     AND NOT (disposition = 'UNKNOWN' AND abandoned = false)
@@ -339,8 +345,10 @@ def get_outbound_stats_both_years(
             SELECT
                 ob_2026.member_phone,
                 ob_2026.attempts_2026,
+                ob_2026.attempt_days_2026,
                 ob_2026.pickups_2026,
                 ob_2025.attempts_2025,
+                ob_2025.attempt_days_2025,
                 ob_2025.pickups_2025
             FROM ob_2026
             INNER JOIN ob_2025 ON ob_2026.member_phone = ob_2025.member_phone
@@ -360,7 +368,9 @@ def get_outbound_stats_both_years(
         }).fetchall()
 
     df = pd.DataFrame(rows, columns=[
-        "member_phone", "attempts_2026", "pickups_2026", "attempts_2025", "pickups_2025"
+        "member_phone",
+        "attempts_2026", "attempt_days_2026", "pickups_2026",
+        "attempts_2025", "attempt_days_2025", "pickups_2025",
     ])
     df["pickup_rate_2026"] = (df["pickups_2026"] / df["attempts_2026"] * 100).where(df["attempts_2026"] > 0, 0).round(2)
     df["pickup_rate_2025"] = (df["pickups_2025"] / df["attempts_2025"] * 100).where(df["attempts_2025"] > 0, 0).round(2)
@@ -414,13 +424,14 @@ def get_outbound_stats_by_number(
             SELECT
                 dnis AS member_phone,
                 COUNT(*) FILTER (WHERE disposition != ALL(:not_dialed_dispos)) AS total_calls,
+                COUNT(DISTINCT CASE WHEN disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) AS attempt_days,
                 COUNT(*) FILTER (WHERE disposition = ANY(:answered_dispos)) AS answered_calls
             FROM crm_2025.call_logs
             WHERE timestamp BETWEEN :start AND :end
                 AND NOT (disposition = 'UNKNOWN' AND abandoned = false)
                 AND skill = ANY(:skills)
             GROUP BY dnis
-            HAVING COUNT(*) FILTER (WHERE disposition != ALL(:not_dialed_dispos)) >= :min_attempts
+            HAVING COUNT(DISTINCT CASE WHEN disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) >= :min_attempts
                 AND COUNT(*) FILTER (WHERE disposition = ANY(:answered_dispos)) = 0
         """)
     elif year == 2025:
@@ -428,26 +439,28 @@ def get_outbound_stats_by_number(
             SELECT
                 dnis AS member_phone,
                 COUNT(*) FILTER (WHERE disposition != ALL(:not_dialed_dispos)) AS total_calls,
+                COUNT(DISTINCT CASE WHEN disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) AS attempt_days,
                 COUNT(*) FILTER (WHERE disposition = ANY(:answered_dispos)) AS answered_calls
             FROM crm_2025.call_logs
             WHERE timestamp BETWEEN :start AND :end
                 AND NOT (disposition = 'UNKNOWN' AND abandoned = false)
                 AND skill = ANY(:skills)
             GROUP BY dnis
-            HAVING COUNT(*) FILTER (WHERE disposition != ALL(:not_dialed_dispos)) >= :min_attempts
+            HAVING COUNT(DISTINCT CASE WHEN disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) >= :min_attempts
         """)
     elif never_answered_only:
         query = text("""
             SELECT
                 destination AS member_phone,
                 COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) AS total_calls,
+                COUNT(DISTINCT CASE WHEN dialer_disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) AS attempt_days,
                 COUNT(*) FILTER (WHERE dialer_disposition = ANY(:answered_dispos)) AS answered_calls
             FROM call_logs
             WHERE timestamp BETWEEN :start AND :end
                 AND NOT (dialer_disposition = 'UNKNOWN' AND abandoned = false)
                 AND skill_name = ANY(:skills)
             GROUP BY destination
-            HAVING COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) >= :min_attempts
+            HAVING COUNT(DISTINCT CASE WHEN dialer_disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) >= :min_attempts
                 AND COUNT(*) FILTER (WHERE dialer_disposition = ANY(:answered_dispos)) = 0
         """)
     else:
@@ -455,19 +468,20 @@ def get_outbound_stats_by_number(
             SELECT
                 destination AS member_phone,
                 COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) AS total_calls,
+                COUNT(DISTINCT CASE WHEN dialer_disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) AS attempt_days,
                 COUNT(*) FILTER (WHERE dialer_disposition = ANY(:answered_dispos)) AS answered_calls
             FROM call_logs
             WHERE timestamp BETWEEN :start AND :end
                 AND NOT (dialer_disposition = 'UNKNOWN' AND abandoned = false)
                 AND skill_name = ANY(:skills)
             GROUP BY destination
-            HAVING COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) >= :min_attempts
+            HAVING COUNT(DISTINCT CASE WHEN dialer_disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) >= :min_attempts
         """)
 
     with Session(engine) as session:
         rows = session.execute(query, params).fetchall()
 
-    df = pd.DataFrame(rows, columns=["member_phone", "total_calls", "answered_calls"])
+    df = pd.DataFrame(rows, columns=["member_phone", "total_calls", "attempt_days", "answered_calls"])
     df["pickup_rate"] = (df["answered_calls"] / df["total_calls"] * 100).where(df["total_calls"] > 0, 0).round(2)
     return df
 
