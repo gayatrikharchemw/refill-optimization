@@ -169,8 +169,18 @@ FLAG_DESCRIPTIONS = {
     ),
 }
 
+def _flag_threshold_description(flag: str, thresholds: dict) -> str:
+    accepted = thresholds["accepted_rate"]
+    avg_sub = thresholds["avg_submitted"]
+    avg_dnw = thresholds["avg_does_not_want"]
+    return {
+        "a": f"% Refill Submitted (of Accepted) below group average ({avg_sub:.1f}%), with % Refill Accepted ≥ {accepted:.0f}%",
+        "b": f"% Refill Accepted below {accepted:.0f}% and % Refill Submitted below group average ({avg_sub:.1f}%)",
+        "c": f"% Refill Accepted below {accepted:.0f}% and % Member Does Not Want Refill above group average ({avg_dnw:.1f}%)",
+    }[flag]
 
-def send_agent_performance_alert(agent_report: pd.DataFrame, config: dict, date_range: str = None) -> None:
+
+def send_agent_performance_alert(agent_report: pd.DataFrame, config: dict, date_range: str = None, thresholds: dict = None) -> None:
     email_config = config["email"]
     flagged = agent_report.loc[agent_report["Performance Flag"] != ""].copy()
 
@@ -195,8 +205,11 @@ def send_agent_performance_alert(agent_report: pd.DataFrame, config: dict, date_
                 <td>{row['% Member Does Not Want Refill']:.1f}%</td>
             </tr>"""
 
+        threshold_desc = _flag_threshold_description(flag, thresholds) if thresholds else ""
+        threshold_line = f"<p>The following agents have {threshold_desc}:</p>" if threshold_desc else ""
         flag_sections += f"""
         <h3>Category {flag.upper()}: {title}</h3>
+        {threshold_line}
         <p><em>{recommendation}</em></p>
         <table border="1" cellpadding="6">
             <tr>
@@ -217,7 +230,8 @@ def send_agent_performance_alert(agent_report: pd.DataFrame, config: dict, date_
     html = f"""
     <p>Hi,</p>
     <p>The following agents have been flagged for performance review based on data for{date_range_str}
-    (minimum {agent_report['Total Completed Calls'].min():.0f}+ completed cases, accepted rate threshold: 84%).</p>
+    (minimum {thresholds["min_completed"] if thresholds else int(agent_report["Total Completed Calls"].min())}+ completed cases,
+    accepted rate threshold: {f"{thresholds['accepted_rate']:.0f}%" if thresholds else "84%"}).</p>
     {flag_sections}
     <p>Thanks,<br>{email_config['sender_name']}</p>
     """

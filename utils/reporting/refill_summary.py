@@ -246,4 +246,11 @@ def build_agent_report(
 
     df = df.sort_values("% Refill Submitted (of Accepted)", ascending=True).reset_index(drop=True)
 
-    return df
+    thresholds = {
+        "min_completed": MIN_COMPLETED_CASES,
+        "accepted_rate": ACCEPTED_RATE_THRESHOLD,
+        "avg_submitted": avg_submitted,
+        "avg_does_not_want": avg_does_not_want,
+    }
+
+    return df, thresholds

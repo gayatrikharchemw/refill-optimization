@@ -51,7 +51,7 @@ def main(config: HumanaRefillConfig, etl_dir: str = None, as_of_date: datetime.d
         logger.info(f"  Found {len(transformed_claims_files)} files")
 
     result_summary_df, decline_reason_counts, submission_result_counts = build_reports(refill_report, transformed_claims_files)
-    agent_report = build_agent_report(refill_report, as_of_date=as_of_date, period=period)
+    agent_report, thresholds = build_agent_report(refill_report, as_of_date=as_of_date, period=period)
 
     today = now.strftime("%Y-%m-%d")
     reports_dir = config["paths"]["reports"] / today
@@ -72,7 +72,7 @@ def main(config: HumanaRefillConfig, etl_dir: str = None, as_of_date: datetime.d
     else:  # monthly
         agent_date_range = as_of_date.strftime("%B %Y")
 
-    send_agent_performance_alert(agent_report, config.config, date_range=agent_date_range)
+    send_agent_performance_alert(agent_report, config.config, date_range=agent_date_range, thresholds=thresholds)
 
 
 if __name__ == "__main__":
