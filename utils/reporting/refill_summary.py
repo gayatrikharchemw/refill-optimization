@@ -174,6 +174,38 @@ MIN_COMPLETED_CASES = 100
 ACCEPTED_RATE_THRESHOLD = 84.0
 
 
+def build_under_100_report(
+    refill_report: pd.DataFrame,
+    as_of_date=None,
+) -> pd.DataFrame:
+    """Build weekly report of agents with fewer than 100 completed calls."""
+    import datetime
+
+    completed = refill_report.loc[refill_report["Disposition"] == "Completed"].copy()
+    completed["Interaction Date"] = pd.to_datetime(completed["Interaction Date"]).dt.date
+
+    if as_of_date is None:
+        as_of_date = datetime.date.today()
+
+    week_start = as_of_date - datetime.timedelta(days=as_of_date.weekday())
+    week_end = week_start + datetime.timedelta(days=6)
+    mask = (completed["Interaction Date"] >= week_start) & (completed["Interaction Date"] <= week_end)
+    completed = completed.loc[mask]
+
+    df = (
+        completed
+        .groupby("Completion By Email")
+        .apply(agent_summary)
+        .reset_index()
+    )
+
+    df = df.loc[df["Total Completed Calls"] < MIN_COMPLETED_CASES].reset_index(drop=True)
+    df = df.sort_values("Total Completed Calls", ascending=True).reset_index(drop=True)
+    df.insert(1, "Week", f"{week_start.strftime('%m/%d/%Y')} - {week_end.strftime('%m/%d/%Y')}")
+
+    return df
+
+
 def build_agent_report(
     refill_report: pd.DataFrame,
     as_of_date=None,

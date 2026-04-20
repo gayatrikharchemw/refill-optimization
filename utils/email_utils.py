@@ -180,6 +180,48 @@ def _flag_threshold_description(flag: str, thresholds: dict) -> str:
     }[flag]
 
 
+def send_under_100_completions_alert(report: pd.DataFrame, config: dict, date_range: str = None) -> None:
+    email_config = config["email"]
+
+    if report.empty:
+        return
+
+    rows = ""
+    for _, row in report.iterrows():
+        rows += f"""
+        <tr>
+            <td>{row['Completion By Email']}</td>
+            <td>{int(row['Total Completed Calls'])}</td>
+            <td>{row['% Refill Accepted']:.1f}%</td>
+            <td>{row['% Refill Declined']:.1f}%</td>
+            <td>{row['% Reminded - Refilled on Own (of Accepted)']:.1f}%</td>
+        </tr>"""
+
+    date_range_str = f" ({date_range})" if date_range else ""
+    html = f"""
+    <p>Hi {email_config['recipient_name']},</p>
+    <p>The following agents completed fewer than 100 calls for the week{date_range_str}:</p>
+    <table border="1" cellpadding="6">
+        <tr>
+            <th>Agent</th>
+            <th>Total Completed Calls</th>
+            <th>% Accepted</th>
+            <th>% Declined</th>
+            <th>% Refilled on Own (of Accepted)</th>
+        </tr>
+        {rows}
+    </table>
+    <p>Thanks,<br>{email_config['sender_name']}</p>
+    """
+
+    emailer = get_email_client(config)
+    emailer.send_email(
+        to_addresses=email_config["agent_performance_to"],
+        subject=f"Refill Under 100 Completions{date_range_str}",
+        html=html,
+    )
+
+
 def send_agent_performance_alert(agent_report: pd.DataFrame, config: dict, date_range: str = None, thresholds: dict = None) -> None:
     email_config = config["email"]
     flagged = agent_report.loc[agent_report["Performance Flag"] != ""].copy()

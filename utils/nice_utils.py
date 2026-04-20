@@ -290,7 +290,8 @@ def get_outbound_stats_both_years(
                 WHERE timestamp BETWEEN :start_2026 AND :end_2026
                     AND skill_name = ANY(:skills_2026)
                 GROUP BY destination
-                HAVING COUNT(DISTINCT CASE WHEN dialer_disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) >= :min_attempts
+                HAVING COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) >= :min_attempts
+                    AND COUNT(DISTINCT CASE WHEN dialer_disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) >= :min_attempts
                     AND COUNT(*) FILTER (WHERE dialer_disposition = ANY(:answered_dispos)) = 0
             ),
             ob_2025 AS (
@@ -328,7 +329,8 @@ def get_outbound_stats_both_years(
                 WHERE timestamp BETWEEN :start_2026 AND :end_2026
                     AND skill_name = ANY(:skills_2026)
                 GROUP BY destination
-                HAVING COUNT(DISTINCT CASE WHEN dialer_disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) >= :min_attempts
+                HAVING COUNT(*) FILTER (WHERE dialer_disposition != ALL(:not_dialed_dispos)) >= :min_attempts
+                    AND COUNT(DISTINCT CASE WHEN dialer_disposition != ALL(:not_dialed_dispos) THEN timestamp::date END) >= :min_attempts
             ),
             ob_2025 AS (
                 SELECT

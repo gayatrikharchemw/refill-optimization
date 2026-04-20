@@ -41,12 +41,15 @@ email:
     - "gayatrishriram.kharche@medwatchers.com"
     - "Melina.Arteaga@medwatchers.com"
     - "Samantha.Seanez@medwatchers.com"
+    - "Rohan.Shingre@medwatchers.com"
+    - "chris.francis@medwatchers.com"
   subject: "Refill Internal Report Stats"
   agent_performance_to:
     - "narega.nazarian@medwatchers.com"
     - "gayatrishriram.kharche@medwatchers.com"
     - "Melina.Arteaga@medwatchers.com"
     - "Samantha.Seanez@medwatchers.com"
+    - "Pankaj.Kodavandlapalli@medwatchers.com"
   no_post_completion_to:
     - "narega.nazarian@medwatchers.com"
     - "gayatrishriram.kharche@medwatchers.com"
